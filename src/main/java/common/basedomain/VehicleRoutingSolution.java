@@ -15,6 +15,8 @@ public interface VehicleRoutingSolution {
 
   List<Job> getJobs();
 
+  List<Location> getLocations();
+
   static void setPreviousStandstill(Job job, Job clonedJob, Map<String, Vehicle> clonedVehicles, Map<String, Job> clonedJobs) {
     if (job.getPreviousStandstill() != null) {
       Standstill previousStandstill;

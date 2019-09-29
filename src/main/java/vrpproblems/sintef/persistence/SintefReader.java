@@ -119,7 +119,7 @@ public class SintefReader implements ProblemReader<VehicleRoutingSolution> {
       throw new RuntimeException("Failed to parse input file");
     }
 
-    Shift shift = new SintefShift("SintefShift", vehicleList, jobList);
+    Shift shift = new SintefShift("SintefShift", vehicleList, jobList, locationList);
     VehicleRoutingSolution solution = new SintefVehicleRoutingSolution(shift);
 
     return solution;

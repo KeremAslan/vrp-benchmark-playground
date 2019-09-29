@@ -1,13 +1,11 @@
 package vrpproblems.sintef.domain;
 
-import common.basedomain.Job;
-import common.basedomain.Shift;
-import common.basedomain.Vehicle;
-import common.basedomain.VehicleRoutingSolution;
+import common.basedomain.*;
 import org.apache.commons.lang3.NotImplementedException;
 import org.optaplanner.core.api.domain.solution.PlanningEntityCollectionProperty;
 import org.optaplanner.core.api.domain.solution.PlanningScore;
 import org.optaplanner.core.api.domain.solution.PlanningSolution;
+import org.optaplanner.core.api.domain.solution.drools.ProblemFactCollectionProperty;
 import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 import org.optaplanner.core.api.score.buildin.hardmediumsoftlong.HardMediumSoftLongScore;
 
@@ -46,6 +44,12 @@ public class SintefVehicleRoutingSolution implements VehicleRoutingSolution {
   @ValueRangeProvider(id = "jobsRange")
   public List<Job> getJobs() {
     return shift.getJobs();
+  }
+
+  @ProblemFactCollectionProperty
+  @Override
+  public List<Location> getLocations() {
+    return shift.getLocations();
   }
 
   @Override

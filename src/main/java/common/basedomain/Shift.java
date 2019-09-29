@@ -9,11 +9,13 @@ public abstract class Shift {
 
   private List<Vehicle> vehicles;
   private List<Job> jobs;
+  private List<Location> locations;
 
-  public Shift(String id, List<Vehicle> vehicles, List<Job> jobs) {
+  public Shift(String id, List<Vehicle> vehicles, List<Job> jobs, List<Location> locations) {
     this.id = id;
     this.vehicles = vehicles;
     this.jobs = jobs;
+    this.locations = locations;
   }
 
   public String getId() {
@@ -26,6 +28,10 @@ public abstract class Shift {
 
   public List<Job> getJobs() {
     return jobs;
+  }
+
+  public List<Location> getLocations() {
+    return locations;
   }
 
   @Override

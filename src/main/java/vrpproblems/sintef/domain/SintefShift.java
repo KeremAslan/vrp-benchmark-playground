@@ -1,9 +1,6 @@
 package vrpproblems.sintef.domain;
 
-import common.basedomain.Job;
-import common.basedomain.Shift;
-import common.basedomain.Vehicle;
-import common.basedomain.VehicleRoutingSolution;
+import common.basedomain.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,8 +9,8 @@ import java.util.Map;
 
 public class SintefShift extends Shift {
 
-  public SintefShift(String id, List<Vehicle> vehicles, List<Job> jobs) {
-    super(id, vehicles, jobs);
+  public SintefShift(String id, List<Vehicle> vehicles, List<Job> jobs, List<Location> locations) {
+    super(id, vehicles, jobs, locations);
   }
 
 
@@ -63,6 +60,7 @@ public class SintefShift extends Shift {
         clonedVehicle.setNextJob(jobToSet);
       }
     }
-    return new SintefShift(getId(), new ArrayList<>(clonedVehicles.values()), new ArrayList<>(clonedJobs.values()));
+    // locations are facts so don't need to be cloned
+    return new SintefShift(getId(), new ArrayList<>(clonedVehicles.values()), new ArrayList<>(clonedJobs.values()), getLocations());
   }
 }

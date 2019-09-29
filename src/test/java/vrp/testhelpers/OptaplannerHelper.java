@@ -1,9 +1,6 @@
 package vrp.testhelpers;
 
-import common.basedomain.Job;
-import common.basedomain.Shift;
-import common.basedomain.Vehicle;
-import common.basedomain.VehicleRoutingSolution;
+import common.basedomain.*;
 import org.apache.commons.lang3.NotImplementedException;
 import org.optaplanner.core.api.solver.Solver;
 import org.optaplanner.core.api.solver.SolverFactory;
@@ -33,6 +30,7 @@ public class OptaplannerHelper {
     VehicleRoutingSolution problem = sintefReader.read(problemFile);
     List<Job> jobs = problem.getJobs();
     List<Vehicle> vehicles = problem.getVehicles();
+    List<Location> locations = problem.getLocations();
 
     if (numberOfVehicles > vehicles.size() || numberOfJobs > jobs.size())
       throw new IndexOutOfBoundsException(
@@ -42,7 +40,7 @@ public class OptaplannerHelper {
     vehicles = vehicles.subList(0, numberOfVehicles);
     jobs = jobs.subList(0, numberOfJobs);
 
-    Shift shift = new SintefShift("Test Shift", vehicles, jobs);
+    Shift shift = new SintefShift("Test Shift", vehicles, jobs, locations);
     problem = new SintefVehicleRoutingSolution(shift);
 
     return problem;
