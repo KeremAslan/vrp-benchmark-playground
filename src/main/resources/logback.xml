@@ -1,8 +1,4 @@
-
 <configuration scan="true">
-
-    <!--<logger name="org.optaplanner" level="info"/>-->
-
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!-- encoders are assigned the type
@@ -16,7 +12,7 @@
         <appender-ref ref="STDOUT" />
     </root>
 
-
+    <logger name="org.drools" level="error"/>
     <logger name="org.optaplanner" level="info"/>
 </configuration>
 
