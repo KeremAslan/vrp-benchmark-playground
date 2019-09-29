@@ -7,17 +7,20 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.mvel2.sh.Main;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import vrpproblems.ProblemType;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.logging.Logger;
 
 public class MainApp {
 
-  private final static Logger LOG = Logger.getLogger(MainApp.class.getName());
+//  private final static Logger LOG = Logger.getLogger(MainApp.class.getName());
+  private static final Logger LOG = LoggerFactory.getLogger(Main.class);
 
   public static void main(String[] args) {
 
@@ -30,7 +33,6 @@ public class MainApp {
     try {
       CommandLineParser commandLineParser = new DefaultParser();
       CommandLine cl = commandLineParser.parse(options, args);
-
       if (cl.getOptionValue("m").equalsIgnoreCase(String.valueOf(1))) {
         LOG.info("Running solver in mode 1");
         problemType =  ProblemType.getProblemTypeByString(cl.getOptionValue("p"));

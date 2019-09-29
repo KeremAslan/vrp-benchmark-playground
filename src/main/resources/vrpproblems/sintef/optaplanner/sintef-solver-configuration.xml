@@ -7,6 +7,8 @@
 
     <moveThreadCount>AUTO</moveThreadCount>
 
+    <environmentMode>REPRODUCIBLE</environmentMode>
+
     <scoreDirectorFactory>
         <easyScoreCalculatorClass>vrpproblems.sintef.solver.score.SintefEasyScoreCalculator</easyScoreCalculatorClass>
     </scoreDirectorFactory>
