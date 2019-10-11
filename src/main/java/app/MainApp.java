@@ -33,8 +33,10 @@ public class MainApp {
     try {
       CommandLineParser commandLineParser = new DefaultParser();
       CommandLine cl = commandLineParser.parse(options, args);
-      if (cl.getOptionValue("m").equalsIgnoreCase(String.valueOf(1))) {
-        LOG.info("Running solver in mode 1");
+      Integer runMode = Integer.valueOf(cl.getOptionValue("m"));
+      if (runMode == 1) {
+        // single file mode
+        LOG.info("Running solver in mode 1 (single file mode)");
         problemType =  ProblemType.getProblemTypeByString(cl.getOptionValue("p"));
 
         file = new File(cl.getOptionValue("f"));
@@ -43,6 +45,10 @@ public class MainApp {
         App app = new App(problemType, file);
         VehicleRoutingSolution solvedSolution = app.run();
         solvedSolution.export(outputFile);
+      } else if (runMode == 2) {
+        LOG.info("Running solver in mode 2 (batch mode)");
+      } else {
+        throw new IllegalArgumentException("Unknown value for runmode " + runMode);
       }
 
     } catch (ParseException p) {
@@ -57,7 +63,7 @@ public class MainApp {
     Options options = new Options();
     options.addOption(Option.builder("m")
         .longOpt("run-mode")
-        .desc("The mode oto run the solver in.")
+        .desc("The mode to run the solver in. Takes 1 for running taking a single file or 2 to run a batch of files in a folder")
         .numberOfArgs(1)
         .hasArg()
         .required(true)

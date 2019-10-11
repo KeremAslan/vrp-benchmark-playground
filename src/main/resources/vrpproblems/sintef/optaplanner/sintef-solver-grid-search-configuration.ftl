@@ -3,19 +3,17 @@
 <plannerBenchmark>
     <benchmarkDirectory>local/data/vrp</benchmarkDirectory>
     <warmUpSecondsSpentLimit>30</warmUpSecondsSpentLimit>
-    <parallelBenchmarkCount>1</parallelBenchmarkCount>
+    <parallelBenchmarkCount>3</parallelBenchmarkCount>
     <inheritedSolverBenchmark>
         <problemBenchmarks>
-
             <solutionFileIOClass>vrpproblems.sintef.persistence.SintefReaderAdaptor</solutionFileIOClass>
-<#--            <inputSolutionFile>input/sintef/1000_customer_instances/C1_10_1.TXT</inputSolutionFile>-->
             <inputSolutionFile>input/sintef/1000_customer_instances/C1_10_2.TXT</inputSolutionFile>
             <inputSolutionFile>input/sintef/1000_customer_instances/C1_10_3.TXT</inputSolutionFile>
-<#--            <inputSolutionFile>local/data/vrp/sintef/1000_customer_instances/R1_10_1.TXT</inputSolutionFile>-->
-<#--            <inputSolutionFile>local/data/vrp/sintef/1000_customer_instances/R2_10_9.TXT</inputSolutionFile>-->
-<#--            <inputSolutionFile>local/data/vrp/sintef/1000_customer_instances/RC1_10_1.TXT</inputSolutionFile>-->
-    <!--        <inputSolutionFile>local/data/vrp/sintef/1000_customer_instances/C1_10_3.TXT</inputSolutionFile>-->
-
+            <inputSolutionFile>input/sintef/1000_customer_instances/R1_10_2.TXT</inputSolutionFile>
+            <inputSolutionFile>input/sintef/1000_customer_instances/R1_10_3.TXT</inputSolutionFile>
+            <inputSolutionFile>input/sintef/1000_customer_instances/R2_10_5.TXT</inputSolutionFile>
+            <inputSolutionFile>input/sintef/1000_customer_instances/RC1_10_3.TXT</inputSolutionFile>
+            <inputSolutionFile>input/sintef/1000_customer_instances/RC2_10_5.TXT</inputSolutionFile>
         </problemBenchmarks>
 
         <solver>
@@ -25,49 +23,51 @@
             </scanAnnotatedClasses>
 
             <termination>
-                <minutesSpentLimit>6</minutesSpentLimit>
+                <minutesSpentLimit>3</minutesSpentLimit>
             </termination>
             <constructionHeuristic>FIRST_FIT</constructionHeuristic>
         </solver>
     </inheritedSolverBenchmark>
 
+    <#list [10, 100, 1000] as parabolicDistributionMax>
+        <#list ["TABU_SEARCH", "LATE_ACCEPTANCE", "HILL_CLIMBING"] as localSearchType>
     <solverBenchmark>
-        <name>Late Acceptance</name>
+        <name>${localSearchType} with ${parabolicDistributionMax}</name>
         <solver>
-            <moveThreadCount>AUTO</moveThreadCount>
+            <moveThreadCount>4</moveThreadCount>
             <scoreDirectorFactory>
                 <easyScoreCalculatorClass>vrpproblems.sintef.solver.score.SintefEasyScoreCalculator</easyScoreCalculatorClass>
             </scoreDirectorFactory>
             <localSearch>
-                <localSearchType>LATE_ACCEPTANCE</localSearchType>
+                <localSearchType>${localSearchType}</localSearchType>
                 <unionMoveSelector>
                     <changeMoveSelector>
-                        <entitySelector id="entitySelector1"/>
+                        <entitySelector id="changeMoveSelector"/>
                         <valueSelector>
                             <nearbySelection>
-                                <originEntitySelector mimicSelectorRef="entitySelector1"/>
+                                <originEntitySelector mimicSelectorRef="changeMoveSelector"/>
                                 <nearbyDistanceMeterClass>vrpproblems.sintef.solver.SintefJobNearbyDistanceMeter</nearbyDistanceMeterClass>
-                                <parabolicDistributionSizeMaximum>20</parabolicDistributionSizeMaximum>
+                                <parabolicDistributionSizeMaximum>${parabolicDistributionMax}</parabolicDistributionSizeMaximum>
                             </nearbySelection>
                         </valueSelector>
                     </changeMoveSelector>
                     <swapMoveSelector>
-                        <entitySelector id="entitySelector2"/>
+                        <entitySelector id="swapMoveSelector"/>
                         <secondaryEntitySelector>
                             <nearbySelection>
-                                <originEntitySelector mimicSelectorRef="entitySelector2"/>
+                                <originEntitySelector mimicSelectorRef="swapMoveSelector"/>
                                 <nearbyDistanceMeterClass>vrpproblems.sintef.solver.SintefJobNearbyDistanceMeter</nearbyDistanceMeterClass>
-                                <parabolicDistributionSizeMaximum>20</parabolicDistributionSizeMaximum>
+                                <parabolicDistributionSizeMaximum>${parabolicDistributionMax}</parabolicDistributionSizeMaximum>
                             </nearbySelection>
                         </secondaryEntitySelector>
                     </swapMoveSelector>
                     <tailChainSwapMoveSelector>
-                        <entitySelector id="entitySelector3"/>
+                        <entitySelector id="tailChainSwapMoveSelector"/>
                         <valueSelector>
                             <nearbySelection>
-                                <originEntitySelector mimicSelectorRef="entitySelector3"/>
+                                <originEntitySelector mimicSelectorRef="tailChainSwapMoveSelector"/>
                                 <nearbyDistanceMeterClass>vrpproblems.sintef.solver.SintefJobNearbyDistanceMeter</nearbyDistanceMeterClass>
-                                <parabolicDistributionSizeMaximum>20</parabolicDistributionSizeMaximum>
+                                <parabolicDistributionSizeMaximum>${parabolicDistributionMax}</parabolicDistributionSizeMaximum>
                             </nearbySelection>
                         </valueSelector>
                     </tailChainSwapMoveSelector>
@@ -75,8 +75,8 @@
             </localSearch>
         </solver>
     </solverBenchmark>
-
-
+            </#list>
+    </#list>
 
 
 </plannerBenchmark>
