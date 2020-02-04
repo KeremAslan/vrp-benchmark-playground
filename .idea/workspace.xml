@@ -1,7 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a20645eb-79e4-4096-8457-c55be5c86ee5" name="Default Changelist" comment="" />
+    <list default="true" id="a20645eb-79e4-4096-8457-c55be5c86ee5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Drools_6_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_1_3_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_25_0_jre.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_6_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_bind_jaxb_core_2_3_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_bind_jaxb_impl_2_3_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_thoughtworks_xstream_xstream_1_4_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_cli_commons_cli_1_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_activation_1_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_antlr_runtime_3_5_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_math3_3_4_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_compat_qual_2_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_mojo_animal_sniffer_annotations_1_14.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_drools_drools_compiler_7_20_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_drools_drools_core_7_20_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jdt_core_compiler_ecj_4_6_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_freemarker_freemarker_2_3_26_jbossorg_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_21_0_GA.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_xml_bind_jboss_jaxb_api_2_3_spec_1_0_1_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_13_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_1_3_50.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_common_1_3_50.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_3_50.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_jdk8_1_3_50.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_test_1_3_50.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_test_common_1_3_50.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jfree_jcommon_1_0_23.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jfree_jfreechart_1_0_19.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_kie_kie_api_7_20_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_kie_kie_internal_7_20_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_kie_soup_kie_soup_commons_7_20_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_kie_soup_kie_soup_maven_support_7_20_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_kie_soup_kie_soup_project_datamodel_api_7_20_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_kie_soup_kie_soup_project_datamodel_commons_7_20_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mvel_mvel2_2_4_4_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_optaplanner_optaplanner_benchmark_7_20_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_optaplanner_optaplanner_core_7_20_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_optaplanner_optaplanner_persistence_common_7_20_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_optaplanner_optaplanner_persistence_jaxb_7_20_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_optaplanner_optaplanner_persistence_xstream_7_20_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_reflections_reflections_0_9_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_threeten_threeten_extra_1_5_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xmlpull_xmlpull_1_1_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xpp3_xpp3_min_1_1_4c.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sbt.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/aether-api-1.0.0.v20140518.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/aether-connector-basic-1.0.0.v20140518.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/aether-impl-1.0.0.v20140518.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/aether-spi-1.0.0.v20140518.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/aether-transport-file-1.0.0.v20140518.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/aether-transport-http-1.0.0.v20140518.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/aether-transport-wagon-1.0.0.v20140518.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/aether-util-1.0.0.v20140518.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ant-1.8.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ant-launcher-1.8.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/antlr-runtime-3.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/aopalliance-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/cdi-api-1.0-SP4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/commons-codec-1.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/commons-logging-1.1.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dom4j-1.6.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-compiler-6.2.0.Final-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-compiler-6.2.0.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-core-6.2.0.Final-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-core-6.2.0.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-decisiontables-6.2.0.Final-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-decisiontables-6.2.0.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-jsr94-6.2.0.Final-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-jsr94-6.2.0.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-persistence-jpa-6.2.0.Final-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-persistence-jpa-6.2.0.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-templates-6.2.0.Final-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-templates-6.2.0.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-verifier-6.2.0.Final-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/drools-verifier-6.2.0.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ecj-4.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/guava-13.0.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/hibernate-jpa-2.0-api-1.0.1.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/httpclient-4.3.6.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/httpcore-4.3.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/itext-2.1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/javassist-3.18.1-GA.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/javax.inject-1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jboss-interceptors-api_1.1_spec-1.0.1.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jboss-transaction-api_1.1_spec-1.0.1.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jcl-over-slf4j-1.7.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jsoup-1.7.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jsr250-api-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/jsr94-1.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/kie-api-6.2.0.Final-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/kie-api-6.2.0.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/kie-ci-6.2.0.Final-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/kie-ci-6.2.0.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/kie-internal-6.2.0.Final-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/kie-internal-6.2.0.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/maven-aether-provider-3.2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/maven-artifact-3.2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/maven-compat-3.2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/maven-core-3.2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/maven-model-3.2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/maven-model-builder-3.2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/maven-plugin-api-3.2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/maven-repository-metadata-3.2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/maven-settings-3.2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/maven-settings-builder-3.2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/mvel2-2.2.4.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/org.eclipse.sisu.inject-0.0.0.M5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/org.eclipse.sisu.plexus-0.0.0.M5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/plexus-cipher-1.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/plexus-classworlds-2.5.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/plexus-component-annotations-1.5.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/plexus-interpolation-1.19.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/plexus-sec-dispatcher-1.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/plexus-utils-3.0.17.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/poi-3.10.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/poi-ooxml-3.10.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/poi-ooxml-schemas-3.10.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/protobuf-java-2.5.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/sisu-guice-3.1.0-no_aop.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/slf4j-api-1.7.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/stax-api-1.0.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/wagon-http-2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/wagon-http-shared4-2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/wagon-provider-api-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/xml-apis-1.3.04.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/xmlbeans-2.3.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/xmlpull-1.1.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/xpp3_min-1.1.4c.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/xstream-1.4.7.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vehiclerouting.iml" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -10,43 +158,53 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
+  <component name="FUSProjectUsageTrigger">
+    <session id="1165729201">
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="iml" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="IDEA_MODULE" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="gitignore" value="7" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="7" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/vrpproblems/sintef/persistence/SintefReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="69" column="50" selection-start-line="69" selection-start-column="50" selection-end-line="69" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/vrp/testhelpers/OptaplannerHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="52" column="72" selection-start-line="52" selection-start-column="72" selection-end-line="52" selection-end-column="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/App.java">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="59" column="72" selection-start-line="59" selection-start-column="72" selection-end-line="59" selection-end-column="72" />
+            <state relative-caret-position="51">
+              <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/vrpproblems/sintef/solver/score/SintefEasyScoreCalculator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="38" column="46" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -55,21 +213,56 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/MainApp.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/common/basedomain/Location.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="289">
+              <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/java/io/File.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/vrpproblems/sintef/domain/SintefLocation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="276" column="18" selection-start-line="276" selection-start-column="18" selection-end-line="276" selection-end-column="18" />
+            <state relative-caret-position="153">
+              <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/common/solver/TimeWindowedJobArrivalTimeUpdatingVariableListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="816">
+              <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/vrpproblems/sintef/solver/score/SintefIncrementalScoreCalculator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3315">
+              <caret line="208" selection-start-line="212" selection-start-column="18" selection-end-line="212" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/common/basedomain/timewindowed/TimeWindowedJob.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="612">
+              <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/input/sintef/1000_customer_instances/C1_10_7.TXT">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -83,10 +276,8 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>createFromX</find>
-    </findStrings>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -114,6 +305,7 @@
         <option value="$PROJECT_DIR$/src/test/java/vrp/testhelpers/OptaplannerHelper.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/app/MainApp.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -153,17 +345,17 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1677" />
-    <option name="y" value="23" />
-    <option name="width" value="1920" />
-    <option name="height" value="999" />
+    <option name="x" value="-1928" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -175,24 +367,6 @@
             <path>
               <item name="vehiclerouting" type="b2602c69:ProjectViewProjectNode" />
               <item name="vehiclerouting" type="462c0819:PsiDirectoryNode" />
-              <item name="input" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vehiclerouting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vehiclerouting" type="462c0819:PsiDirectoryNode" />
-              <item name="input" type="462c0819:PsiDirectoryNode" />
-              <item name="sintef" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vehiclerouting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vehiclerouting" type="462c0819:PsiDirectoryNode" />
-              <item name="input" type="462c0819:PsiDirectoryNode" />
-              <item name="sintef" type="462c0819:PsiDirectoryNode" />
-              <item name="1000_customer_instances" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vehiclerouting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vehiclerouting" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -200,32 +374,21 @@
               <item name="vehiclerouting" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vehiclerouting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vehiclerouting" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vehiclerouting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vehiclerouting" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Course" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/resources/common/vrp/problems/sintef" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580831393579" />
+    <property name="jdk.selected.JAVA_MODULE" value="11" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -234,23 +397,10 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="app" />
-      <recent name="vrp.testhelpers" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/test/resources/common/vrp/problems/sintef" />
-      <recent name="$PROJECT_DIR$/src/test/resources/common/vrp/problems/sintef/data" />
-      <recent name="$PROJECT_DIR$/input" />
-      <recent name="$PROJECT_DIR$/src/main/java" />
-      <recent name="$PROJECT_DIR$/src/test/java" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -320,17 +470,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SbtLocalSettings">
-    <option name="projectSyncType">
-      <map>
-        <entry key="$PROJECT_DIR$/../ars" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../delivery_module2" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../vrp-solver" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../vrp-solver-api" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/../vrp-solver-service" value="PREVIEW" />
-      </map>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -346,52 +485,18 @@
     </task>
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="vrp_integration_in_vehiclerouting - 2019.09.20 at 13h 21m 44s.xml">
-      <configuration name="vrp.integration in vehiclerouting" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="vrp_integration_in_vehiclerouting - 2019.09.20 at 13h 25m 30s.xml">
-      <configuration name="vrp.integration in vehiclerouting" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="vrp_integration_in_vehiclerouting - 2019.09.20 at 13h 29m 13s.xml">
-      <configuration name="vrp.integration in vehiclerouting" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="vrp_integration_in_vehiclerouting - 2019.09.20 at 13h 30m 33s.xml">
-      <configuration name="vrp.integration in vehiclerouting" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="vrp_integration_in_vehiclerouting - 2019.09.20 at 13h 32m 16s.xml">
-      <configuration name="vrp.integration in vehiclerouting" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="vrp_integration_in_vehiclerouting - 2019.09.20 at 13h 33m 51s.xml">
-      <configuration name="vrp.integration in vehiclerouting" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="vrp_integration_in_vehiclerouting - 2019.09.20 at 13h 34m 47s.xml">
-      <configuration name="vrp.integration in vehiclerouting" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="vrp_integration_in_vehiclerouting - 2019.09.20 at 13h 35m 34s.xml">
-      <configuration name="vrp.integration in vehiclerouting" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="vrp_integration_in_vehiclerouting - 2019.09.20 at 13h 50m 03s.xml">
-      <configuration name="vrp.integration in vehiclerouting" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="vrp_integration_in_vehiclerouting - 2019.09.20 at 13h 50m 38s.xml">
-      <configuration name="vrp.integration in vehiclerouting" configurationId="JUnit" />
-    </history-entry>
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7456000" />
-  </component>
   <component name="ToolWindowManager">
-    <frame x="1677" y="23" width="1920" height="999" extended-state="6" />
+    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973376" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2521322" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Educational.CheckDetails" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32918552" />
@@ -407,7 +512,8 @@
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32692307" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" />
       <window_info anchor="bottom" id="Database Changes" order="14" />
-      <window_info anchor="bottom" id="Version Control" order="15" />
+      <window_info anchor="bottom" id="Version Control" order="15" show_stripe_button="false" />
+      <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -420,85 +526,60 @@
       <window_info anchor="right" id="Theme Preview" order="9" />
     </layout>
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/optaplanner/optaplanner-core/7.20.0.Final/optaplanner-core-7.20.0.Final.jar!/org/optaplanner/core/impl/solver/XStreamXmlSolverFactory.class</url>
-          <line>30</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/optaplanner/optaplanner-core/7.20.0.Final/optaplanner-core-7.20.0.Final.jar!/org/optaplanner/core/impl/solver/XStreamXmlSolverFactory.class</url>
-          <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/common/basedomain/Shift.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/common/basedomain/timewindowed/TimeWindowedVehicle.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/common/basedomain/DistanceType.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/Utils.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/common/basedomain/VehicleType.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/vrpproblems/lex/firstmile/domain/LexFirstMileAddress.java" />
-    <entry file="file://$PROJECT_DIR$/src/vrpproblems/lex/firstmile/dto/input/LexFirstMileVehicleDto.java" />
-    <entry file="file://$PROJECT_DIR$/src/vrpproblems/lex/firstmile/domain/LexFirstMileVehicleRoutingSolution.java" />
-    <entry file="file://$PROJECT_DIR$/src/vrpproblems/lex/firstmile/solver/score/LexFirstMileIncrementalScoreCalculator.java" />
-    <entry file="file://$PROJECT_DIR$/src/vrpproblems/lex/firstmile/dto/output/RouteDto.java" />
-    <entry file="file://$PROJECT_DIR$/src/vrpproblems/lex/firstmile/dto/output/LexFirstMileOutputVehicleDto.java" />
-    <entry file="file://$PROJECT_DIR$/src/vrpproblems/lex/firstmile/domain/LexDepotLocation.java" />
-    <entry file="file://$PROJECT_DIR$/src/vrpproblems/lex/firstmile/persistence/LexFirstMileWriter.java" />
-    <entry file="file://$PROJECT_DIR$/src/vrpproblems/lex/firstmile/dto/input/LexFirstMileSellerDto.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/vrpproblems/sintef/domain/SintefVehicleRoutingSolutionCloner.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="70" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="70" />
+        <state relative-caret-position="238">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vrpproblems/sintef/domain/SintefVehicleRoutingSolution.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="374">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vrpproblems/ProblemType.java">
+    <entry file="file://$PROJECT_DIR$/vehiclerouting.iml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/vrpproblems/sintef/solver/score/SintefEasyScoreCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="425">
+          <caret line="38" column="46" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/vrpproblems/sintef/optaplanner/sintef-solver-configuration.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/vrp/problems/lex/firstmile/domain/LexFirstMileVehicleTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/vrp/integration/SintefScoreOptaplannerIntegrationTests.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/common/basedomain/Location.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+        <state relative-caret-position="289">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vrpproblems/sintef/domain/SintefDepot.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/vrpproblems/sintef/domain/SintefLocation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="56" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
+        <state relative-caret-position="153">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/common/solver/TimeWindowedJobArrivalTimeUpdatingVariableListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/vrpproblems/sintef/solver/score/SintefIncrementalScoreCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3315">
+          <caret line="208" selection-start-line="212" selection-start-column="18" selection-end-line="212" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -507,197 +588,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/common/basedomain/timewindowed/TimeWindowedJob.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="54" column="68" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="612">
+          <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/common/basedomain/XyCoordinatesT.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/common/basedomain/XyCoordinates.kt" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/common/basedomain/Coordinates.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/common/basedomain/Location.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/common/basedomain/coordinates.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/input/sintef/1000_customer_instances/C1_10_2.TXT">
+    <entry file="file://$PROJECT_DIR$/input/sintef/1000_customer_instances/C1_10_7.TXT">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/common/basedomain/timewindowed/TimeWindowedLocation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/vrp/problems/sintef/domain/SintefJobTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="200" column="52" selection-start-line="200" selection-start-column="52" selection-end-line="200" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/vrp/problems/sintef/domain/SintefVehicleTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="51" column="52" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/Benchmarker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vrpproblems/sintef/domain/SintefLocation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="44" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#319#320#0" expanded="true" />
-            <element signature="e#351#352#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources.properties" />
-    <entry file="file://$PROJECT_DIR$/src/test/resources/common/vrp/problems/sintef/data/C1_10_1.TXT">
+    <entry file="file://$PROJECT_DIR$/vehiclerouting/vehiclerouting.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/vrp/integration/SintefJobOptaplannerIntegrationTests.java">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="38" column="56" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/optaplanner/optaplanner-core/7.12.0.Final/optaplanner-core-7.12.0.Final.jar!/org/optaplanner/core/api/solver/SolverFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/optaplanner/optaplanner-core/7.26.0.Final/optaplanner-core-7.26.0.Final.jar!/org/optaplanner/core/impl/solver/XStreamXmlSolverFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/common/vrp/problems/sintef/sintef-solver-only-construction-configuration.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/vrpproblems/sintef/persistence/SintefReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="69" column="50" selection-start-line="69" selection-start-column="50" selection-end-line="69" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/optaplanner/optaplanner-core/7.26.0.Final/optaplanner-core-7.26.0.Final.jar!/org/optaplanner/core/api/solver/SolverFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="36" column="64" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.10/junit-4.10.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/optaplanner/optaplanner-core/7.20.0.Final/optaplanner-core-7.20.0.Final.jar!/org/optaplanner/core/api/solver/SolverFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/optaplanner/optaplanner-core/7.20.0.Final/optaplanner-core-7.20.0.Final.jar!/org/optaplanner/core/impl/solver/XStreamXmlSolverFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1225#1226#0" expanded="true" />
-            <element signature="e#1266#1267#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/vrp/testhelpers/OptaplannerHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="52" column="72" selection-start-line="52" selection-start-column="72" selection-end-line="52" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dependencies.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4391">
-          <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/java/io/File.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="276" column="18" selection-start-line="276" selection-start-column="18" selection-end-line="276" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/commons-cli/commons-cli/1.4/commons-cli-1.4.jar!/org/apache/commons/cli/CommandLine.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/MainApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="59" column="72" selection-start-line="59" selection-start-column="72" selection-end-line="59" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="51">
+          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -718,6 +623,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -729,6 +635,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
+          <last-edited>Python 3.7 (optaplanner) interpreter library</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -740,7 +647,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>11</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -752,10 +659,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
+          <last-edited>vehiclerouting</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -763,6 +672,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.2.71</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
