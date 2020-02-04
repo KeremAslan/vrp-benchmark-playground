@@ -11,17 +11,17 @@ import vrpproblems.sintef.persistence.SintefReader;
 import java.io.File;
 import java.util.logging.Logger;
 
-public class App {
+public class OptaplannerApp {
 
   /** Default logger for this class */
-  private static final Logger LOG = Logger.getLogger(App.class.getName());
+  private static final Logger LOG = Logger.getLogger(OptaplannerApp.class.getName());
 
   private ProblemType problemType;
   private VehicleRoutingSolution uninitiatedVrpProblem;
   private VehicleRoutingSolution solvedSolution;
 
 
-  public App(ProblemType problemType, File file) {
+  public OptaplannerApp(ProblemType problemType, File file) {
     this.problemType = problemType;
     init(file);
   }
@@ -44,7 +44,7 @@ public class App {
 
   public VehicleRoutingSolution run() {
     if (uninitiatedVrpProblem == null || problemType == null)  {
-      throw new NullPointerException("The variable uninitiatedVrpProblem is not yet initialised. Call App.init() first to initialise a solution");
+      throw new NullPointerException("The variable uninitiatedVrpProblem is not yet initialised. Call OptaplannerApp.init() first to initialise a solution");
     }
 
     String optaplannerConfigurationFile;

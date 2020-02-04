@@ -13,9 +13,6 @@ import org.slf4j.LoggerFactory;
 import vrpproblems.ProblemType;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class MainApp {
 
@@ -41,8 +38,8 @@ public class MainApp {
         file = new File(cl.getOptionValue("f"));
         outputFile = new File(cl.getOptionValue("o"));
 
-        App app = new App(problemType, file);
-        VehicleRoutingSolution solvedSolution = app.run();
+        OptaplannerApp optaplannerApp = new OptaplannerApp(problemType, file);
+        VehicleRoutingSolution solvedSolution = optaplannerApp.run();
         solvedSolution.export(outputFile);
       } else if (runMode.equalsIgnoreCase("or-tools")) {
         LOG.info("Running or-tools");
@@ -55,7 +52,6 @@ public class MainApp {
     }
 
   }
-
 
 
   public static Options getOptions() {
