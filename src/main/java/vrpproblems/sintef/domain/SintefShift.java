@@ -1,6 +1,6 @@
 package vrpproblems.sintef.domain;
 
-import common.basedomain.*;
+import common.optaplanner.basedomain.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;

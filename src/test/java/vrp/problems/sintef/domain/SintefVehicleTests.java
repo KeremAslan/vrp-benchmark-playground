@@ -2,11 +2,11 @@ package vrp.problems.sintef.domain;
 
 
 
-import common.basedomain.DistanceType;
-import common.basedomain.JobType;
-import common.basedomain.Location;
-import common.basedomain.VehicleType;
-import common.basedomain.XyCoordinates;
+import common.optaplanner.basedomain.DistanceType;
+import common.optaplanner.basedomain.JobType;
+import common.optaplanner.basedomain.Location;
+import common.optaplanner.basedomain.VehicleType;
+import common.optaplanner.basedomain.XyCoordinates;
 import org.junit.Assert;
 import org.junit.Test;
 import org.threeten.extra.Interval;

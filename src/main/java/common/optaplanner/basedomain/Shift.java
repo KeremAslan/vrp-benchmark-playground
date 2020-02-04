@@ -1,4 +1,4 @@
-package common.basedomain;
+package common.optaplanner.basedomain;
 
 
 import java.util.List;

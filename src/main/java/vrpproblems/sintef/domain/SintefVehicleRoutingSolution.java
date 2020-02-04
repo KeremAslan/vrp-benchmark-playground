@@ -1,6 +1,6 @@
 package vrpproblems.sintef.domain;
 
-import common.basedomain.*;
+import common.optaplanner.basedomain.*;
 import org.apache.commons.lang3.NotImplementedException;
 import org.optaplanner.core.api.domain.solution.PlanningEntityCollectionProperty;
 import org.optaplanner.core.api.domain.solution.PlanningScore;

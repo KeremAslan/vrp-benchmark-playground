@@ -1,7 +1,7 @@
 package vrpproblems.sintef.domain;
 
-import common.basedomain.Location;
-import common.basedomain.timewindowed.TimeWindowedDepot;
+import common.optaplanner.basedomain.Location;
+import common.optaplanner.basedomain.timewindowed.TimeWindowedDepot;
 import org.threeten.extra.Interval;
 
 import java.time.ZoneId;

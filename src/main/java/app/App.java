@@ -1,7 +1,7 @@
 package app;
 
 
-import common.basedomain.VehicleRoutingSolution;
+import common.optaplanner.basedomain.VehicleRoutingSolution;
 import org.apache.commons.lang3.NotImplementedException;
 import org.optaplanner.core.api.solver.Solver;
 import org.optaplanner.core.api.solver.SolverFactory;

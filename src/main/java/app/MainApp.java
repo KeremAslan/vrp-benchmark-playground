@@ -1,6 +1,6 @@
 package app;
 
-import common.basedomain.VehicleRoutingSolution;
+import common.optaplanner.basedomain.VehicleRoutingSolution;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;

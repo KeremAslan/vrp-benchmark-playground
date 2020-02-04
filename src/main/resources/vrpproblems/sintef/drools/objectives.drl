@@ -2,8 +2,8 @@ package vrpproblems.sintef.drools;
 dialect "java"
 
 import org.optaplanner.core.api.score.buildin.hardmediumsoftlong.HardMediumSoftLongScoreHolder;
-import common.basedomain.Vehicle;
-import common.basedomain.DistanceType;
+import common.optaplanner.basedomain.Vehicle;
+import common.optaplanner.basedomain.DistanceType;
 import vrpproblems.sintef.domain.SintefJob;
 
 global HardMediumSoftLongScoreHolder scoreHolder;

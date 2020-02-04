@@ -1,4 +1,4 @@
-package common.solver;
+package common.optaplanner.solver;
 
 import org.optaplanner.core.impl.domain.variable.listener.VariableListener;
 import org.optaplanner.core.impl.score.director.ScoreDirector;

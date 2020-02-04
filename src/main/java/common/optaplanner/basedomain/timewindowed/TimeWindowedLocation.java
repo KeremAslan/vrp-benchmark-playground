@@ -1,8 +1,8 @@
-package common.basedomain.timewindowed;
+package common.optaplanner.basedomain.timewindowed;
 
 
-import common.basedomain.BaseCoordinate;
-import common.basedomain.Location;
+import common.optaplanner.basedomain.BaseCoordinate;
+import common.optaplanner.basedomain.Location;
 import org.threeten.extra.Interval;
 
 import java.time.ZoneId;

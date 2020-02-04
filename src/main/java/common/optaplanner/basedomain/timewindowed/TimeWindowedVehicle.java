@@ -1,8 +1,8 @@
-package common.basedomain.timewindowed;
+package common.optaplanner.basedomain.timewindowed;
 
-import common.basedomain.Depot;
-import common.basedomain.Vehicle;
-import common.basedomain.VehicleType;
+import common.optaplanner.basedomain.Depot;
+import common.optaplanner.basedomain.Vehicle;
+import common.optaplanner.basedomain.VehicleType;
 import org.threeten.extra.Interval;
 
 import java.time.Instant;

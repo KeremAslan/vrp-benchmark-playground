@@ -1,4 +1,4 @@
-package common.persistence;
+package common.optaplanner.persistence;
 
 
 import java.io.File;

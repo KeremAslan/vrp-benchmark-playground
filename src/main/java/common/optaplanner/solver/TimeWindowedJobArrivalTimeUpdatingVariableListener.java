@@ -1,9 +1,9 @@
-package common.solver;
+package common.optaplanner.solver;
 
-import common.basedomain.DistanceType;
-import common.basedomain.Standstill;
-import common.basedomain.timewindowed.TimeWindowedJob;
-import common.basedomain.timewindowed.TimeWindowedVehicle;
+import common.optaplanner.basedomain.DistanceType;
+import common.optaplanner.basedomain.Standstill;
+import common.optaplanner.basedomain.timewindowed.TimeWindowedJob;
+import common.optaplanner.basedomain.timewindowed.TimeWindowedVehicle;
 import org.optaplanner.core.impl.score.director.ScoreDirector;
 import vrpproblems.sintef.domain.SintefJob;
 

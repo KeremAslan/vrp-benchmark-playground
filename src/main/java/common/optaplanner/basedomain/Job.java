@@ -1,6 +1,6 @@
-package common.basedomain;
+package common.optaplanner.basedomain;
 
-import common.persistence.dto.Dto;
+import common.optaplanner.persistence.dto.Dto;
 import org.optaplanner.core.api.domain.entity.PlanningEntity;
 import org.optaplanner.core.api.domain.lookup.PlanningId;
 import org.optaplanner.core.api.domain.variable.AnchorShadowVariable;

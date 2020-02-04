@@ -1,8 +1,8 @@
-package common.basedomain;
+package common.optaplanner.basedomain;
 
 
-import common.persistence.dto.Dto;
-import common.solver.NumberOfJobsUpdatingVariableListener;
+import common.optaplanner.persistence.dto.Dto;
+import common.optaplanner.solver.NumberOfJobsUpdatingVariableListener;
 import org.optaplanner.core.api.domain.entity.PlanningEntity;
 import org.optaplanner.core.api.domain.lookup.PlanningId;
 import org.optaplanner.core.api.domain.variable.CustomShadowVariable;
@@ -83,7 +83,7 @@ public abstract class Vehicle implements Standstill {
   }
 
   @CustomShadowVariable(variableListenerClass = NumberOfJobsUpdatingVariableListener.class,
-  sources = {@PlanningVariableReference(entityClass = common.basedomain.Standstill.class, variableName = "nextJob")})
+  sources = {@PlanningVariableReference(entityClass = common.optaplanner.basedomain.Standstill.class, variableName = "nextJob")})
   public Integer getNumberOfJobs() {
     return numberOfJobs;
   }

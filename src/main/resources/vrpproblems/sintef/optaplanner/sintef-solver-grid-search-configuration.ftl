@@ -21,7 +21,7 @@
         <solver>
             <scanAnnotatedClasses>
                 <packageInclude>vrpproblems.sintef</packageInclude>
-                <packageInclude>common.basedomain</packageInclude>
+                <packageInclude>common.optaplanner.basedomain</packageInclude>
             </scanAnnotatedClasses>
 
             <termination>

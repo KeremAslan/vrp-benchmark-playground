@@ -1,8 +1,8 @@
 package vrpproblems.sintef.solver;
 
-import common.basedomain.DistanceType;
-import common.basedomain.Job;
-import common.basedomain.Standstill;
+import common.optaplanner.basedomain.DistanceType;
+import common.optaplanner.basedomain.Job;
+import common.optaplanner.basedomain.Standstill;
 import org.optaplanner.core.impl.heuristic.selector.common.nearby.NearbyDistanceMeter;
 
 public class SintefJobNearbyDistanceMeter implements NearbyDistanceMeter<Job, Standstill> {

@@ -1,9 +1,9 @@
 package vrpproblems.sintef.solver.score;
 
-import common.basedomain.DistanceType;
-import common.basedomain.Job;
-import common.basedomain.Standstill;
-import common.basedomain.Vehicle;
+import common.optaplanner.basedomain.DistanceType;
+import common.optaplanner.basedomain.Job;
+import common.optaplanner.basedomain.Standstill;
+import common.optaplanner.basedomain.Vehicle;
 import org.optaplanner.core.api.score.Score;
 import org.optaplanner.core.api.score.buildin.hardmediumsoftlong.HardMediumSoftLongScore;
 import org.optaplanner.core.impl.score.director.incremental.IncrementalScoreCalculator;

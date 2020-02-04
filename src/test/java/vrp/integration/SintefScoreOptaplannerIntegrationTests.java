@@ -1,8 +1,8 @@
 package vrp.integration;
 
-import common.basedomain.DistanceType;
-import common.basedomain.Vehicle;
-import common.basedomain.VehicleRoutingSolution;
+import common.optaplanner.basedomain.DistanceType;
+import common.optaplanner.basedomain.Vehicle;
+import common.optaplanner.basedomain.VehicleRoutingSolution;
 import vrp.testhelpers.OptaplannerHelper;
 import org.junit.Assert;
 import org.junit.Test;

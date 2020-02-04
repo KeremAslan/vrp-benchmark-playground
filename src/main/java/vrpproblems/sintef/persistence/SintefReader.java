@@ -1,14 +1,14 @@
 package vrpproblems.sintef.persistence;
 
-import common.basedomain.Job;
-import common.basedomain.JobType;
-import common.basedomain.Location;
-import common.basedomain.Shift;
-import common.basedomain.Vehicle;
-import common.basedomain.VehicleRoutingSolution;
-import common.basedomain.VehicleType;
-import common.basedomain.XyCoordinates;
-import common.persistence.ProblemReader;
+import common.optaplanner.basedomain.Job;
+import common.optaplanner.basedomain.JobType;
+import common.optaplanner.basedomain.Location;
+import common.optaplanner.basedomain.Shift;
+import common.optaplanner.basedomain.Vehicle;
+import common.optaplanner.basedomain.VehicleRoutingSolution;
+import common.optaplanner.basedomain.VehicleType;
+import common.optaplanner.basedomain.XyCoordinates;
+import common.optaplanner.persistence.ProblemReader;
 import org.apache.commons.lang3.StringUtils;
 import org.threeten.extra.Interval;
 import vrpproblems.sintef.domain.SintefDepot;

@@ -1,6 +1,6 @@
 package vrpproblems.sintef.persistence;
 
-import common.basedomain.VehicleRoutingSolution;
+import common.optaplanner.basedomain.VehicleRoutingSolution;
 import org.optaplanner.persistence.common.api.domain.solution.SolutionFileIO;
 
 import java.io.File;

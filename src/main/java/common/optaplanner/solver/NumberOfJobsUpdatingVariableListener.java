@@ -1,8 +1,8 @@
-package common.solver;
+package common.optaplanner.solver;
 
-import common.basedomain.Job;
-import common.basedomain.Standstill;
-import common.basedomain.Vehicle;
+import common.optaplanner.basedomain.Job;
+import common.optaplanner.basedomain.Standstill;
+import common.optaplanner.basedomain.Vehicle;
 import org.optaplanner.core.impl.score.director.ScoreDirector;
 
 public class NumberOfJobsUpdatingVariableListener extends BaseVariableListener<Standstill> {

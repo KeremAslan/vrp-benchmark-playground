@@ -1,4 +1,4 @@
-package common.basedomain;
+package common.optaplanner.basedomain;
 
 public abstract class Depot {
 

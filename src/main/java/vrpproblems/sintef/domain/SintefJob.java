@@ -1,13 +1,13 @@
 package vrpproblems.sintef.domain;
 
-import common.basedomain.DistanceType;
-import common.basedomain.Job;
-import common.basedomain.JobType;
-import common.basedomain.Location;
-import common.basedomain.Standstill;
-import common.basedomain.Vehicle;
-import common.basedomain.timewindowed.TimeWindowedJob;
-import common.persistence.dto.Dto;
+import common.optaplanner.basedomain.DistanceType;
+import common.optaplanner.basedomain.Job;
+import common.optaplanner.basedomain.JobType;
+import common.optaplanner.basedomain.Location;
+import common.optaplanner.basedomain.Standstill;
+import common.optaplanner.basedomain.Vehicle;
+import common.optaplanner.basedomain.timewindowed.TimeWindowedJob;
+import common.optaplanner.persistence.dto.Dto;
 import org.apache.commons.lang3.NotImplementedException;
 import org.threeten.extra.Interval;
 

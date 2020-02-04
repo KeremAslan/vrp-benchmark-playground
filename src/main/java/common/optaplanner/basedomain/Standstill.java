@@ -1,4 +1,4 @@
-package common.basedomain;
+package common.optaplanner.basedomain;
 
 
 import org.optaplanner.core.api.domain.entity.PlanningEntity;

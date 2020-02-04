@@ -1,8 +1,8 @@
 package vrpproblems.sintef.domain;
 
-import common.basedomain.BaseCoordinate;
-import common.basedomain.DistanceType;
-import common.basedomain.Location;
+import common.optaplanner.basedomain.BaseCoordinate;
+import common.optaplanner.basedomain.DistanceType;
+import common.optaplanner.basedomain.Location;
 import org.apache.commons.lang3.NotImplementedException;
 
 

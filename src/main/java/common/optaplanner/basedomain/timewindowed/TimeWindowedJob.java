@@ -1,9 +1,9 @@
-package common.basedomain.timewindowed;
+package common.optaplanner.basedomain.timewindowed;
 
-import common.basedomain.Job;
-import common.basedomain.JobType;
-import common.basedomain.Location;
-import common.solver.TimeWindowedJobArrivalTimeUpdatingVariableListener;
+import common.optaplanner.basedomain.Job;
+import common.optaplanner.basedomain.JobType;
+import common.optaplanner.basedomain.Location;
+import common.optaplanner.solver.TimeWindowedJobArrivalTimeUpdatingVariableListener;
 import org.optaplanner.core.api.domain.entity.PlanningEntity;
 import org.optaplanner.core.api.domain.variable.CustomShadowVariable;
 import org.optaplanner.core.api.domain.variable.PlanningVariableReference;

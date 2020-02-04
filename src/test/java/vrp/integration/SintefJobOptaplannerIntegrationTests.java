@@ -1,11 +1,11 @@
 package vrp.integration;
 
 
-import common.basedomain.DistanceType;
-import common.basedomain.Job;
-import common.basedomain.Vehicle;
-import common.basedomain.VehicleRoutingSolution;
-import common.basedomain.timewindowed.TimeWindowedJob;
+import common.optaplanner.basedomain.DistanceType;
+import common.optaplanner.basedomain.Job;
+import common.optaplanner.basedomain.Vehicle;
+import common.optaplanner.basedomain.VehicleRoutingSolution;
+import common.optaplanner.basedomain.timewindowed.TimeWindowedJob;
 import vrp.testhelpers.OptaplannerHelper;
 import org.junit.Assert;
 import org.junit.Test;

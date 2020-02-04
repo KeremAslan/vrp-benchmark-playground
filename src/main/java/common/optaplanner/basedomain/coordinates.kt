@@ -1,4 +1,4 @@
-package common.basedomain
+package common.optaplanner.basedomain
 
 data class Coordinates(val latitude:Double, val longitude: Double): BaseCoordinate {
     override fun latitude():Double {
