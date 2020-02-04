@@ -33,8 +33,9 @@ public class MainApp {
     try {
       CommandLineParser commandLineParser = new DefaultParser();
       CommandLine cl = commandLineParser.parse(options, args);
-      if (cl.getOptionValue("m").equalsIgnoreCase(String.valueOf(1))) {
-        LOG.info("Running solver in mode 1");
+      String runMode = cl.getOptionValue("m");
+      if (runMode.equalsIgnoreCase("optaplanner")) {
+        LOG.info("Running optaplanner");
         problemType =  ProblemType.getProblemTypeByString(cl.getOptionValue("p"));
 
         file = new File(cl.getOptionValue("f"));
@@ -43,6 +44,10 @@ public class MainApp {
         App app = new App(problemType, file);
         VehicleRoutingSolution solvedSolution = app.run();
         solvedSolution.export(outputFile);
+      } else if (runMode.equalsIgnoreCase("or-tools")) {
+        LOG.info("Running or-tools");
+      } else {
+        throw new IllegalArgumentException("Run-mode of " + runMode + " is not recognised.");
       }
 
     } catch (ParseException p) {
@@ -57,7 +62,7 @@ public class MainApp {
     Options options = new Options();
     options.addOption(Option.builder("m")
         .longOpt("run-mode")
-        .desc("The mode oto run the solver in.")
+        .desc("The mode to run the solver in. Accepts optaplanner or or-tools")
         .numberOfArgs(1)
         .hasArg()
         .required(true)
