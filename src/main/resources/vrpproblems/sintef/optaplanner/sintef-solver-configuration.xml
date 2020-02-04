@@ -11,14 +11,21 @@
 
     <scoreDirectorFactory>
         <!--<easyScoreCalculatorClass>vrpproblems.sintef.solver.score.SintefEasyScoreCalculator</easyScoreCalculatorClass>-->
-        <scoreDrl>vrpproblems/sintef/drools/constraints.drl</scoreDrl>
-        <scoreDrl>vrpproblems/sintef/drools/objectives.drl</scoreDrl>
-        <assertionScoreDirectorFactory>
-            <easyScoreCalculatorClass>vrpproblems.sintef.solver.score.SintefEasyScoreCalculator</easyScoreCalculatorClass>
-        </assertionScoreDirectorFactory>
+        <!--<scoreDrl>vrpproblems/sintef/drools/constraints.drl</scoreDrl>-->
+        <!--<scoreDrl>vrpproblems/sintef/drools/objectives.drl</scoreDrl>-->
+        <incrementalScoreCalculatorClass>vrpproblems.sintef.solver.score.SintefIncrementalScoreCalculator</incrementalScoreCalculatorClass>
+        <!--<assertionScoreDirectorFactory>-->
+            <!--<easyScoreCalculatorClass>vrpproblems.sintef.solver.score.SintefEasyScoreCalculator</easyScoreCalculatorClass>-->
+        <!--</assertionScoreDirectorFactory>-->
     </scoreDirectorFactory>
     <!--Note construction heuristics don't necessarily create feasible solutions-->
-    <constructionHeuristic>FIRST_FIT</constructionHeuristic>
+    <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+        <changeMoveSelector>
+            <!-- <valueSelector variableName="previousStandstill"></valueSelector> -->
+            <selectedCountLimit>100</selectedCountLimit>
+        </changeMoveSelector>
+    </constructionHeuristic>
     <localSearch>
         <localSearchType>LATE_ACCEPTANCE</localSearchType>
         <unionMoveSelector>

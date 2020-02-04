@@ -3,19 +3,19 @@
 <plannerBenchmark>
     <benchmarkDirectory>local/data/vrp</benchmarkDirectory>
     <warmUpSecondsSpentLimit>30</warmUpSecondsSpentLimit>
-    <parallelBenchmarkCount>1</parallelBenchmarkCount>
+    <parallelBenchmarkCount>AUTO</parallelBenchmarkCount>
     <inheritedSolverBenchmark>
         <problemBenchmarks>
 
             <solutionFileIOClass>vrpproblems.sintef.persistence.SintefReaderAdaptor</solutionFileIOClass>
-<#--            <inputSolutionFile>input/sintef/1000_customer_instances/C1_10_1.TXT</inputSolutionFile>-->
             <inputSolutionFile>input/sintef/1000_customer_instances/C1_10_2.TXT</inputSolutionFile>
             <inputSolutionFile>input/sintef/1000_customer_instances/C1_10_3.TXT</inputSolutionFile>
-<#--            <inputSolutionFile>local/data/vrp/sintef/1000_customer_instances/R1_10_1.TXT</inputSolutionFile>-->
-<#--            <inputSolutionFile>local/data/vrp/sintef/1000_customer_instances/R2_10_9.TXT</inputSolutionFile>-->
-<#--            <inputSolutionFile>local/data/vrp/sintef/1000_customer_instances/RC1_10_1.TXT</inputSolutionFile>-->
-    <!--        <inputSolutionFile>local/data/vrp/sintef/1000_customer_instances/C1_10_3.TXT</inputSolutionFile>-->
-
+            <inputSolutionFile>input/sintef/1000_customer_instances/C2_10_1.TXT</inputSolutionFile>
+            <inputSolutionFile>input/sintef/1000_customer_instances/C2_10_2.TXT</inputSolutionFile>
+            <inputSolutionFile>input/sintef/1000_customer_instances/R1_10_1.TXT</inputSolutionFile>
+            <inputSolutionFile>input/sintef/1000_customer_instances/R2_10_4.TXT</inputSolutionFile>
+            <inputSolutionFile>input/sintef/1000_customer_instances/RC1_10_4.TXT</inputSolutionFile>
+            <inputSolutionFile>input/sintef/1000_customer_instances/RC2_10_4.TXT</inputSolutionFile>
         </problemBenchmarks>
 
         <solver>
@@ -25,19 +25,21 @@
             </scanAnnotatedClasses>
 
             <termination>
-                <minutesSpentLimit>6</minutesSpentLimit>
+                <minutesSpentLimit>1</minutesSpentLimit>
             </termination>
-            <constructionHeuristic>FIRST_FIT</constructionHeuristic>
-        </solver>
-    </inheritedSolverBenchmark>
+            <!-- <constructionHeuristic>FIRST_FIT</constructionHeuristic> -->
 
-    <solverBenchmark>
-        <name>Late Acceptance</name>
-        <solver>
-            <moveThreadCount>AUTO</moveThreadCount>
-            <scoreDirectorFactory>
-                <easyScoreCalculatorClass>vrpproblems.sintef.solver.score.SintefEasyScoreCalculator</easyScoreCalculatorClass>
-            </scoreDirectorFactory>
+             <moveThreadCount>1</moveThreadCount>
+
+            <constructionHeuristic>
+                <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+                <changeMoveSelector>
+                    <!-- <valueSelector variableName="previousStandstill"></valueSelector> -->
+                    <selectedCountLimit>100</selectedCountLimit>
+                </changeMoveSelector>
+            </constructionHeuristic>
+
+            
             <localSearch>
                 <localSearchType>LATE_ACCEPTANCE</localSearchType>
                 <unionMoveSelector>
@@ -74,8 +76,26 @@
                 </unionMoveSelector>
             </localSearch>
         </solver>
+    </inheritedSolverBenchmark>
+
+    <solverBenchmark>
+        <name>Easy Score Calculator</name>
+        <solver>
+            <scoreDirectorFactory>
+                <easyScoreCalculatorClass>vrpproblems.sintef.solver.score.SintefEasyScoreCalculator</easyScoreCalculatorClass>
+            </scoreDirectorFactory>
+        </solver>
     </solverBenchmark>
 
+    <solverBenchmark>
+        <name>Drools score calculator</name>
+        <solver>
+            <scoreDirectorFactory>
+               <scoreDrl>vrpproblems/sintef/drools/constraints.drl</scoreDrl>
+                <scoreDrl>vrpproblems/sintef/drools/objectives.drl</scoreDrl>
+            </scoreDirectorFactory>
+        </solver>
+    </solverBenchmark>
 
 
 
