@@ -1,11 +1,16 @@
 package common.ortools.persistence;
 
+import common.optaplanner.basedomain.Depot;
 import common.optaplanner.basedomain.DistanceType;
 import common.optaplanner.basedomain.Job;
 import common.optaplanner.basedomain.Location;
+import common.optaplanner.basedomain.Vehicle;
 import common.optaplanner.basedomain.VehicleRoutingSolution;
 import common.optaplanner.basedomain.timewindowed.TimeWindowedJob;
+import common.ortools.OrToolsProblem;
 import org.threeten.extra.Interval;
+import vrpproblems.sintef.domain.SintefDepot;
+import vrpproblems.sintef.domain.SintefVehicle;
 
 public class OptaplannerToOrToolsAdapter {
 
@@ -20,6 +25,8 @@ public class OptaplannerToOrToolsAdapter {
     private int vehicleNumber;
     /** Index of depot.*/
     private int depotIndex;
+    /** A vehicle model used in the routing problem*/
+    private SintefVehicle vehicle;
 
 
     public OptaplannerToOrToolsAdapter(VehicleRoutingSolution optaPlannnerModel) {
@@ -28,26 +35,61 @@ public class OptaplannerToOrToolsAdapter {
     }
 
     private void init() {
-       setTimeWindowsAndTimeMatrix(optaPlannnerModel);
+        setTimeWindowsAndTimeMatrix(optaPlannnerModel);
         vehicleNumber = optaPlannnerModel.getVehicles().size();
         depotIndex = 0;
     }
 
+
     private void setTimeWindowsAndTimeMatrix(VehicleRoutingSolution optaPlannnerModel) {
-        timeWindows = new long[optaPlannnerModel.getJobs().size()+1][2];
+        int numberOfJobs = optaPlannnerModel.getJobs().size();
+        int totalNumberOfNodes = numberOfJobs + 1;
+
+        // set for depot
+        // although the modelling for optaplanner is done such it allows for start and end depots, the sintef problem has only
+        // a single depot
+        vehicle = (SintefVehicle) optaPlannnerModel.getVehicles().get(0);
+        Depot startDepot = vehicle.getStartDepot();
+        long[] travelTimesForDepot = new long[totalNumberOfNodes];
+        travelTimesForDepot[0] = 0L;
+        for (Job job : optaPlannnerModel.getJobs()) {
+            Long travelTime = startDepot.getDistanceTo(DistanceType.ROAD_DISTANCE, job.getLocation());
+            int indexofJob = optaPlannnerModel.getJobs().indexOf(job);
+            travelTimesForDepot[indexofJob] = travelTime;
+        }
+        timeMatrix[depotIndex] = travelTimesForDepot;
+
+        timeWindows = new long[totalNumberOfNodes][2];
+
+        SintefDepot sintefDepot = (SintefDepot) startDepot;
+        timeWindows[depotIndex] = new long[]{
+            sintefDepot.getOperationalTimeWindow().getStart().getEpochSecond(), sintefDepot.getOperationalTimeWindow().getEnd().getEpochSecond()};
         for (Job job1 : optaPlannnerModel.getJobs()) {
             TimeWindowedJob timeWindowedJob = (TimeWindowedJob) job1;
             int indexOfJob1 = optaPlannnerModel.getJobs().indexOf(job1) + 1;
             Interval interval = timeWindowedJob.getAllowedTimeWindow();
             timeWindows[indexOfJob1] = new long[]{interval.getStart().getEpochSecond(), interval.getEnd().getEpochSecond()};
 
-            long[] travelTimesForJob = new long[optaPlannnerModel.getJobs().size() + 1];
+            long[] travelTimesForJob = new long[totalNumberOfNodes];
+            travelTimesForJob[0] = job1.getTravelTimeInSecondsTo(DistanceType.ROAD_DISTANCE, vehicle);
             for (Job job2 : optaPlannnerModel.getJobs()) {
                 int indexOfJob2 = optaPlannnerModel.getJobs().indexOf(job2) + 1;
-                Long travelTimeBetweenJob1AndJob2 = job1.getTravelTimeInSecondsTo(DistanceType.STRAIGHT_LINE_DISTANCE, job2);
-                travelTimesForJob[indexOfJob2] = travelTimeBetweenJob1AndJob2;
+                Long travelTimeBetweenJobs = job1.getTravelTimeInSecondsTo(DistanceType.STRAIGHT_LINE_DISTANCE, job2);
+                travelTimesForJob[indexOfJob2] = travelTimeBetweenJobs;
                 timeMatrix[indexOfJob1] = travelTimesForJob;
             }
         }
+
     }
+
+
+   public OrToolsProblem getOrToolsProblem() {
+        return new OrToolsProblem(
+            timeWindows,
+            timeMatrix,
+            vehicleNumber,
+            depotIndex,
+            vehicle
+        );
+   }
 }
