@@ -1,6 +1,7 @@
 package app;
 
 import common.optaplanner.basedomain.VehicleRoutingSolution;
+import common.ortools.OrToolsProblem;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -31,18 +32,19 @@ public class MainApp {
       CommandLineParser commandLineParser = new DefaultParser();
       CommandLine cl = commandLineParser.parse(options, args);
       String runMode = cl.getOptionValue("m");
+      file = new File(cl.getOptionValue("f"));
+      problemType =  ProblemType.getProblemTypeByString(cl.getOptionValue("p"));
+      outputFile = new File(cl.getOptionValue("o"));
       if (runMode.equalsIgnoreCase("optaplanner")) {
         LOG.info("Running optaplanner");
-        problemType =  ProblemType.getProblemTypeByString(cl.getOptionValue("p"));
-
-        file = new File(cl.getOptionValue("f"));
-        outputFile = new File(cl.getOptionValue("o"));
-
         OptaplannerApp optaplannerApp = new OptaplannerApp(problemType, file);
         VehicleRoutingSolution solvedSolution = optaplannerApp.run();
         solvedSolution.export(outputFile);
       } else if (runMode.equalsIgnoreCase("or-tools")) {
         LOG.info("Running or-tools");
+        OrToolsApp orToolsApp = new OrToolsApp(problemType, file);
+        orToolsApp.run();
+
       } else {
         throw new IllegalArgumentException("Run-mode of " + runMode + " is not recognised.");
       }

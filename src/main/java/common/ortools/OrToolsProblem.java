@@ -1,10 +1,14 @@
 package common.ortools;
 
+import com.google.ortools.constraintsolver.Assignment;
+import com.google.ortools.constraintsolver.FirstSolutionStrategy;
 import com.google.ortools.constraintsolver.RoutingDimension;
 import com.google.ortools.constraintsolver.RoutingIndexManager;
 import com.google.ortools.constraintsolver.RoutingModel;
+import com.google.ortools.constraintsolver.RoutingSearchParameters;
 import common.optaplanner.basedomain.Vehicle;
 import vrpproblems.sintef.domain.SintefVehicle;
+import com.google.ortools.constraintsolver.main;
 
 public class OrToolsProblem {
 
@@ -19,6 +23,9 @@ public class OrToolsProblem {
   /** A vehicle model used in the routing problem*/
   private SintefVehicle vehicle;
 
+  private RoutingModel routingModel;
+  private Assignment solution;
+
   public OrToolsProblem(long[][] timeWindows, long[][] timeMatrix, int vehicleNumber, int depotIndex, SintefVehicle vehicle) {
     this.timeWindows = timeWindows;
     this.timeMatrix = timeMatrix;
@@ -28,9 +35,9 @@ public class OrToolsProblem {
   }
 
 
-  private void buildProblem() {
+  public void buildProblem() {
     RoutingIndexManager routingIndexManager = new RoutingIndexManager(timeMatrix.length, vehicleNumber, depotIndex);
-    RoutingModel routingModel = new RoutingModel(routingIndexManager);
+    routingModel = new RoutingModel(routingIndexManager);
     final int transitCallBackIndex = routingModel.registerTransitCallback(
         (long fromIndex, long toIndex) -> {
           // Convert from routing variable Index to user NodeIndex
@@ -48,6 +55,21 @@ public class OrToolsProblem {
       long index = routingIndexManager.nodeToIndex(i);
       timeDimension.cumulVar(index).setRange(timeWindows[i][0], timeWindows[i][1]);
     }
+
+    // add time window constraints for each vehicle's start node
+    for (int i=0 ; i < vehicleNumber; i++) {
+      long index = routingModel.start(i);
+      long[] timeWindowsForDepot = timeWindows[0];
+      timeDimension.cumulVar(index).setRange(timeWindowsForDepot[0], timeWindowsForDepot[1]);
+    }
+
   }
 
+  public void solve(RoutingSearchParameters searchParameters) {
+    solution = routingModel.solveWithParameters(searchParameters);
+  }
+
+  public Assignment getSolution() {
+    return solution;
+  }
 }
