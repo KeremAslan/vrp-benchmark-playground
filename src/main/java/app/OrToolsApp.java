@@ -15,6 +15,10 @@ import java.util.logging.Logger;
 
 public class OrToolsApp {
 
+  static {
+    System.loadLibrary("jniortools");
+  }
+
   private static final Logger LOG = Logger.getLogger(OrToolsApp.class.getName());
 
   private ProblemType problemType;
