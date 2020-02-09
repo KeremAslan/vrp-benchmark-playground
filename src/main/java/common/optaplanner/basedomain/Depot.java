@@ -19,6 +19,6 @@ public abstract class Depot {
   }
 
   public long getDistanceTo(DistanceType distanceType, Location location) {
-    return location.getDistanceTo(distanceType, location);
+    return this.location.getDistanceTo(distanceType, location);
   }
 }

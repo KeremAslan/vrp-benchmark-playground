@@ -45,6 +45,7 @@ public class OptaplannerToOrToolsAdapter {
         int numberOfJobs = optaPlannnerModel.getJobs().size();
         int totalNumberOfNodes = numberOfJobs + 1;
 
+        timeMatrix = new long[totalNumberOfNodes][];
         // set for depot
         // although the modelling for optaplanner is done such it allows for start and end depots, the sintef problem has only
         // a single depot
@@ -53,8 +54,8 @@ public class OptaplannerToOrToolsAdapter {
         long[] travelTimesForDepot = new long[totalNumberOfNodes];
         travelTimesForDepot[0] = 0L;
         for (Job job : optaPlannnerModel.getJobs()) {
-            Long travelTime = startDepot.getDistanceTo(DistanceType.ROAD_DISTANCE, job.getLocation());
-            int indexofJob = optaPlannnerModel.getJobs().indexOf(job);
+            Long travelTime = startDepot.getDistanceTo(DistanceType.STRAIGHT_LINE_DISTANCE, job.getLocation());
+            int indexofJob = optaPlannnerModel.getJobs().indexOf(job) + 1;
             travelTimesForDepot[indexofJob] = travelTime;
         }
         timeMatrix[depotIndex] = travelTimesForDepot;
@@ -71,7 +72,7 @@ public class OptaplannerToOrToolsAdapter {
             timeWindows[indexOfJob1] = new long[]{interval.getStart().getEpochSecond(), interval.getEnd().getEpochSecond()};
 
             long[] travelTimesForJob = new long[totalNumberOfNodes];
-            travelTimesForJob[0] = job1.getTravelTimeInSecondsTo(DistanceType.ROAD_DISTANCE, vehicle);
+            travelTimesForJob[0] = job1.getTravelTimeInSecondsTo(DistanceType.STRAIGHT_LINE_DISTANCE, vehicle);
             for (Job job2 : optaPlannnerModel.getJobs()) {
                 int indexOfJob2 = optaPlannnerModel.getJobs().indexOf(job2) + 1;
                 Long travelTimeBetweenJobs = job1.getTravelTimeInSecondsTo(DistanceType.STRAIGHT_LINE_DISTANCE, job2);
@@ -79,6 +80,7 @@ public class OptaplannerToOrToolsAdapter {
                 timeMatrix[indexOfJob1] = travelTimesForJob;
             }
         }
+
 
     }
 
