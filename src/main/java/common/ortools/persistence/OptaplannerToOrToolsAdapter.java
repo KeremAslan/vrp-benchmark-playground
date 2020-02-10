@@ -39,9 +39,9 @@ public class OptaplannerToOrToolsAdapter {
     }
 
     private void init() {
-        setConstraintValues(optaPlannnerModel);
         vehicleNumber = optaPlannnerModel.getVehicles().size();
         depotIndex = 0;
+        setConstraintValues(optaPlannnerModel);
     }
 
 

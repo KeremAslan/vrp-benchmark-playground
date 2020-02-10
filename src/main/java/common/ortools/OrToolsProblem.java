@@ -60,18 +60,22 @@ public class OrToolsProblem {
     // add time window constraints for each location except depot.
     for (int i=1; i < timeWindows.length; i++) {
       long index = routingIndexManager.nodeToIndex(i);
-      long min = timeDimension.cumulVar(index).min();
-      long max = timeDimension.cumulVar(index).max();
-//      System.out.println("Min " + min + " max" + max);
-      IntVar intVar = timeDimension.cumulVar(i);
       timeDimension.cumulVar(index).setRange(timeWindows[i][0], timeWindows[i][1]);
     }
 
     // add vehicle capacity constraints
-//    routingModel.addDimension();
+    int demandCallBackIndex = routingModel.registerUnaryTransitCallback((long fromIndex) -> {
+      int fromNode = routingIndexManager.indexToNode(fromIndex);
+      return demands[fromNode];
+    });
 
-    // add objective function
-
+    routingModel.addDimensionWithVehicleCapacity(
+            demandCallBackIndex,
+            0,
+            vehicleCapacities,
+            true,
+            "Capacity"
+    );
 
     // add time window constraints for each vehicle's start node
     for (int i=0 ; i < vehicleNumber; i++) {
@@ -79,6 +83,8 @@ public class OrToolsProblem {
       long[] timeWindowsForDepot = timeWindows[0];
       timeDimension.cumulVar(index).setRange(timeWindowsForDepot[0], timeWindowsForDepot[1]);
     }
+
+    routingModel.
 
   }
 
