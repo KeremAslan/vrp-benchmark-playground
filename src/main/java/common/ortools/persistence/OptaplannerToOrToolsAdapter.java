@@ -3,13 +3,13 @@ package common.ortools.persistence;
 import common.optaplanner.basedomain.Depot;
 import common.optaplanner.basedomain.DistanceType;
 import common.optaplanner.basedomain.Job;
-import common.optaplanner.basedomain.Location;
 import common.optaplanner.basedomain.Vehicle;
 import common.optaplanner.basedomain.VehicleRoutingSolution;
 import common.optaplanner.basedomain.timewindowed.TimeWindowedJob;
 import common.ortools.OrToolsProblem;
 import org.threeten.extra.Interval;
 import vrpproblems.sintef.domain.SintefDepot;
+import vrpproblems.sintef.domain.SintefJob;
 import vrpproblems.sintef.domain.SintefVehicle;
 
 public class OptaplannerToOrToolsAdapter {
@@ -28,6 +28,10 @@ public class OptaplannerToOrToolsAdapter {
     /** A vehicle model used in the routing problem*/
     private SintefVehicle vehicle;
 
+    private long[] vehicleCapacities;
+
+    private long[] demands;
+
 
     public OptaplannerToOrToolsAdapter(VehicleRoutingSolution optaPlannnerModel) {
         this.optaPlannnerModel = optaPlannnerModel;
@@ -35,17 +39,19 @@ public class OptaplannerToOrToolsAdapter {
     }
 
     private void init() {
-        setTimeWindowsAndTimeMatrix(optaPlannnerModel);
+        setConstraintValues(optaPlannnerModel);
         vehicleNumber = optaPlannnerModel.getVehicles().size();
         depotIndex = 0;
     }
 
 
-    private void setTimeWindowsAndTimeMatrix(VehicleRoutingSolution optaPlannnerModel) {
+    private void setConstraintValues(VehicleRoutingSolution optaPlannnerModel) {
         int numberOfJobs = optaPlannnerModel.getJobs().size();
         int totalNumberOfNodes = numberOfJobs + 1;
 
         timeMatrix = new long[totalNumberOfNodes][];
+        demands = new long[totalNumberOfNodes];
+
         // set for depot
         // although the modelling for optaplanner is done such it allows for start and end depots, the sintef problem has only
         // a single depot
@@ -57,6 +63,7 @@ public class OptaplannerToOrToolsAdapter {
             Long travelTime = startDepot.getDistanceTo(DistanceType.STRAIGHT_LINE_DISTANCE, job.getLocation());
             int indexofJob = optaPlannnerModel.getJobs().indexOf(job) + 1;
             travelTimesForDepot[indexofJob] = travelTime;
+            demands[indexofJob] = ((SintefJob) job).getDemand();
         }
         timeMatrix[depotIndex] = travelTimesForDepot;
 
@@ -80,7 +87,12 @@ public class OptaplannerToOrToolsAdapter {
                 timeMatrix[indexOfJob1] = travelTimesForJob;
             }
         }
-
+        vehicleCapacities = new long[vehicleNumber];
+        for (Vehicle vehicle : optaPlannnerModel.getVehicles()) {
+            int i = optaPlannnerModel.getVehicles().indexOf(vehicle);
+            SintefVehicle sintefVehicle = (SintefVehicle) vehicle;
+            vehicleCapacities[i] = sintefVehicle.getCapacity();
+        }
 
     }
 
@@ -91,7 +103,9 @@ public class OptaplannerToOrToolsAdapter {
             timeMatrix,
             vehicleNumber,
             depotIndex,
-            vehicle
+            vehicle,
+            demands,
+            vehicleCapacities
         );
    }
 }

@@ -2,6 +2,7 @@ package common.ortools;
 
 import com.google.ortools.constraintsolver.Assignment;
 import com.google.ortools.constraintsolver.FirstSolutionStrategy;
+import com.google.ortools.constraintsolver.IntVar;
 import com.google.ortools.constraintsolver.RoutingDimension;
 import com.google.ortools.constraintsolver.RoutingIndexManager;
 import com.google.ortools.constraintsolver.RoutingModel;
@@ -23,15 +24,21 @@ public class OrToolsProblem {
   /** A vehicle model used in the routing problem*/
   private SintefVehicle vehicle;
 
+  private long[] vehicleCapacities;
+  private long[] demands;
+
   private RoutingModel routingModel;
   private Assignment solution;
 
-  public OrToolsProblem(long[][] timeWindows, long[][] timeMatrix, int vehicleNumber, int depotIndex, SintefVehicle vehicle) {
+  public OrToolsProblem(long[][] timeWindows, long[][] timeMatrix, int vehicleNumber, int depotIndex, SintefVehicle vehicle,
+                        long[] vehicleCapacities, long[] demands) {
     this.timeWindows = timeWindows;
     this.timeMatrix = timeMatrix;
     this.vehicleNumber = vehicleNumber;
     this.depotIndex = depotIndex;
     this.vehicle = vehicle;
+    this.vehicleCapacities = vehicleCapacities;
+    this.demands = demands;
   }
 
 
@@ -47,14 +54,24 @@ public class OrToolsProblem {
         }
     );
     routingModel.setArcCostEvaluatorOfAllVehicles(transitCallBackIndex);
-    routingModel.addDimension(transitCallBackIndex, 30, vehicle.getCapacity(), false, "Time");
-    RoutingDimension timeDimension = routingModel.getMutableDimension("Time");
+    routingModel.addDimension(transitCallBackIndex, Integer.MAX_VALUE, Integer.MAX_VALUE, false, "TravelTime");
+    RoutingDimension timeDimension = routingModel.getMutableDimension("TravelTime");
 
     // add time window constraints for each location except depot.
     for (int i=1; i < timeWindows.length; i++) {
       long index = routingIndexManager.nodeToIndex(i);
+      long min = timeDimension.cumulVar(index).min();
+      long max = timeDimension.cumulVar(index).max();
+//      System.out.println("Min " + min + " max" + max);
+      IntVar intVar = timeDimension.cumulVar(i);
       timeDimension.cumulVar(index).setRange(timeWindows[i][0], timeWindows[i][1]);
     }
+
+    // add vehicle capacity constraints
+//    routingModel.addDimension();
+
+    // add objective function
+
 
     // add time window constraints for each vehicle's start node
     for (int i=0 ; i < vehicleNumber; i++) {
