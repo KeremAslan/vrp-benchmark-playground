@@ -45,6 +45,8 @@ public class OrToolsProblem {
   public void buildProblem() {
     RoutingIndexManager routingIndexManager = new RoutingIndexManager(timeMatrix.length, vehicleNumber, depotIndex);
     routingModel = new RoutingModel(routingIndexManager);
+
+    // minimise total travel time
     final int transitCallBackIndex = routingModel.registerTransitCallback(
         (long fromIndex, long toIndex) -> {
           // Convert from routing variable Index to user NodeIndex
@@ -63,6 +65,13 @@ public class OrToolsProblem {
       timeDimension.cumulVar(index).setRange(timeWindows[i][0], timeWindows[i][1]);
     }
 
+    // add time window constraints for each vehicle's start node
+    for (int i=0 ; i < vehicleNumber; i++) {
+      long index = routingModel.start(i);
+      long[] timeWindowsForDepot = timeWindows[0];
+      timeDimension.cumulVar(index).setRange(timeWindowsForDepot[0], timeWindowsForDepot[1]);
+    }
+
     // add vehicle capacity constraints
     int demandCallBackIndex = routingModel.registerUnaryTransitCallback((long fromIndex) -> {
       int fromNode = routingIndexManager.indexToNode(fromIndex);
@@ -77,14 +86,13 @@ public class OrToolsProblem {
             "Capacity"
     );
 
-    // add time window constraints for each vehicle's start node
-    for (int i=0 ; i < vehicleNumber; i++) {
-      long index = routingModel.start(i);
-      long[] timeWindowsForDepot = timeWindows[0];
-      timeDimension.cumulVar(index).setRange(timeWindowsForDepot[0], timeWindowsForDepot[1]);
-    }
 
-    routingModel.
+    // set service times
+    // Or tools does not support seperate service times, hence this is added to the travel time matrix.
+
+    // minimise number of used vehicle
+    routingModel.setFixedCostOfAllVehicles(1);
+
 
   }
 

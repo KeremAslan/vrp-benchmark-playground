@@ -62,7 +62,8 @@ public class OptaplannerToOrToolsAdapter {
         for (Job job : optaPlannnerModel.getJobs()) {
             Long travelTime = startDepot.getDistanceTo(DistanceType.STRAIGHT_LINE_DISTANCE, job.getLocation());
             int indexofJob = optaPlannnerModel.getJobs().indexOf(job) + 1;
-            travelTimesForDepot[indexofJob] = travelTime;
+            // or tools does not provide separate support for service times hence this workaround
+            travelTimesForDepot[indexofJob] = travelTime + ((SintefJob)job).getServiceTime();
             demands[indexofJob] = ((SintefJob) job).getDemand();
         }
         timeMatrix[depotIndex] = travelTimesForDepot;
@@ -82,7 +83,9 @@ public class OptaplannerToOrToolsAdapter {
             travelTimesForJob[0] = job1.getTravelTimeInSecondsTo(DistanceType.STRAIGHT_LINE_DISTANCE, vehicle);
             for (Job job2 : optaPlannnerModel.getJobs()) {
                 int indexOfJob2 = optaPlannnerModel.getJobs().indexOf(job2) + 1;
-                Long travelTimeBetweenJobs = job1.getTravelTimeInSecondsTo(DistanceType.STRAIGHT_LINE_DISTANCE, job2);
+                // or tools does not provide separate support for service times hence this workaround of adding service times to time matrix
+                Long travelTimeBetweenJobs = job1.getTravelTimeInSecondsTo(DistanceType.STRAIGHT_LINE_DISTANCE, job2) +
+                        ((SintefJob) job2).getServiceTime();
                 travelTimesForJob[indexOfJob2] = travelTimeBetweenJobs;
                 timeMatrix[indexOfJob1] = travelTimesForJob;
             }
@@ -104,8 +107,9 @@ public class OptaplannerToOrToolsAdapter {
             vehicleNumber,
             depotIndex,
             vehicle,
-            demands,
-            vehicleCapacities
+            vehicleCapacities,
+            demands
+
         );
    }
 }
