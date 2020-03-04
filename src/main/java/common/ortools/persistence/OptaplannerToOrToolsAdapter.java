@@ -80,12 +80,17 @@ public class OptaplannerToOrToolsAdapter {
             timeWindows[indexOfJob1] = new long[]{interval.getStart().getEpochSecond(), interval.getEnd().getEpochSecond()};
 
             long[] travelTimesForJob = new long[totalNumberOfNodes];
-            travelTimesForJob[0] = job1.getTravelTimeInSecondsTo(DistanceType.STRAIGHT_LINE_DISTANCE, vehicle);
+            travelTimesForJob[0] = job1.getTravelTimeInSecondsTo(DistanceType.STRAIGHT_LINE_DISTANCE, vehicle) + ((TimeWindowedJob) job1).getServiceTime();
             for (Job job2 : optaPlannnerModel.getJobs()) {
                 int indexOfJob2 = optaPlannnerModel.getJobs().indexOf(job2) + 1;
                 // or tools does not provide separate support for service times hence this workaround of adding service times to time matrix
-                Long travelTimeBetweenJobs = job1.getTravelTimeInSecondsTo(DistanceType.STRAIGHT_LINE_DISTANCE, job2) +
-                        ((SintefJob) job2).getServiceTime();
+                Long travelTimeBetweenJobs;
+                if (job1.equals(job2)) {
+                    travelTimeBetweenJobs = 0L;
+                } else {
+                    travelTimeBetweenJobs = job1.getTravelTimeInSecondsTo(DistanceType.STRAIGHT_LINE_DISTANCE, job2) +
+                            ((SintefJob) job2).getServiceTime();
+                }
                 travelTimesForJob[indexOfJob2] = travelTimeBetweenJobs;
                 timeMatrix[indexOfJob1] = travelTimesForJob;
             }
