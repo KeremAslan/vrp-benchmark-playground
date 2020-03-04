@@ -1,12 +1,11 @@
 package app;
 
-import com.google.ortools.constraintsolver.Assignment;
-import com.google.ortools.constraintsolver.FirstSolutionStrategy;
-import com.google.ortools.constraintsolver.RoutingSearchParameters;
-import com.google.ortools.constraintsolver.main;
+import com.google.ortools.constraintsolver.*;
+import com.google.protobuf.Duration;
 import common.optaplanner.basedomain.VehicleRoutingSolution;
 import common.ortools.OrToolsProblem;
 import common.ortools.persistence.OptaplannerToOrToolsAdapter;
+import common.ortools.persistence.OrToolsToOptaplannerAdapter;
 import vrpproblems.ProblemType;
 import vrpproblems.sintef.persistence.SintefReader;
 
@@ -50,15 +49,28 @@ public class OrToolsApp {
     }
 
     uninitiatedVrpProblem.buildProblem();
-
     RoutingSearchParameters searchParameters = main
         .defaultRoutingSearchParameters()
         .toBuilder()
-        .setFirstSolutionStrategy(FirstSolutionStrategy.Value.PATH_CHEAPEST_ARC)
+        .setFirstSolutionStrategy(FirstSolutionStrategy.Value.AUTOMATIC)
+        .setLocalSearchMetaheuristic(LocalSearchMetaheuristic.Value.GUIDED_LOCAL_SEARCH)
+        .setTimeLimit(Duration.newBuilder().setSeconds(60 * 10).build())
+//        .setSolutionLimit(100)
         .build();
+
     uninitiatedVrpProblem.solve(searchParameters);
     this.solvedSolution = uninitiatedVrpProblem.getSolution();
     return solvedSolution;
+  }
+
+  public VehicleRoutingSolution exportToOptaplannerSolution() {
+    if (this.solvedSolution != null) {
+      OrToolsToOptaplannerAdapter orToolsToOptaplannerAdapter = new OrToolsToOptaplannerAdapter(uninitiatedVrpProblem);
+      return null;
+    } else {
+      LOG.warning("Cannot export null solution");
+      throw new NullPointerException("solvedSolution is null");
+    }
   }
 
 }
