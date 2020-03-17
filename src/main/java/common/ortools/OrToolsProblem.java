@@ -115,7 +115,7 @@ public class OrToolsProblem {
     setCapacityConstrainsts();
     setTravelTimeMatrix();
     setTimeWindowConstraints();
-    setDisjoint();
+//    setDisjoint();
     // set service times
     // Or tools does not support seperate service times, hence this is added to the travel time matrix.
 
@@ -147,7 +147,7 @@ public class OrToolsProblem {
     int totalNumberOfVisitedDrops = 0;
     int totalNumberOfNodes = 0;
     Set<Integer> visitedNodes = new HashSet<>();
-    for (int i =0; i < vehicleNumber; i++) {
+    for (int i = 0; i < vehicleNumber; i++) {
       long index = routingModel.start(i);
       System.out.println("Route for vehicle " + i + ":");
       String route = "";
@@ -205,5 +205,9 @@ public class OrToolsProblem {
 
   public RoutingModel getRoutingModel() {
     return routingModel;
+  }
+
+  public RoutingIndexManager getRoutingIndexManager() {
+    return routingIndexManager;
   }
 }

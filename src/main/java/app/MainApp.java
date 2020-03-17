@@ -1,5 +1,6 @@
 package app;
 
+import com.google.ortools.constraintsolver.Assignment;
 import common.optaplanner.basedomain.VehicleRoutingSolution;
 import common.ortools.OrToolsProblem;
 import org.apache.commons.cli.CommandLine;
@@ -43,8 +44,8 @@ public class MainApp {
       } else if (runMode.equalsIgnoreCase("or-tools")) {
         LOG.info("Running or-tools");
         OrToolsApp orToolsApp = new OrToolsApp(problemType, file);
-        orToolsApp.run();
-
+        VehicleRoutingSolution solvedSolution = orToolsApp.run();
+        solvedSolution.export(outputFile);
       } else {
         throw new IllegalArgumentException("Run-mode of " + runMode + " is not recognised.");
       }

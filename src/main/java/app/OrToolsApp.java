@@ -43,7 +43,7 @@ public class OrToolsApp {
     }
   }
 
-  public Assignment run() {
+  public VehicleRoutingSolution run() {
     if (uninitiatedVrpProblem == null || problemType == null)  {
       throw new NullPointerException("The variable uninitiatedVrpProblem is not yet initialised. Call OptaplannerApp.init() first to initialise a solution");
     }
@@ -54,23 +54,18 @@ public class OrToolsApp {
         .toBuilder()
         .setFirstSolutionStrategy(FirstSolutionStrategy.Value.AUTOMATIC)
         .setLocalSearchMetaheuristic(LocalSearchMetaheuristic.Value.GUIDED_LOCAL_SEARCH)
-        .setTimeLimit(Duration.newBuilder().setSeconds(60 * 10).build())
-//        .setSolutionLimit(100)
+        .setTimeLimit(Duration.newBuilder().setSeconds(60 * 60* 6).build())
+        .setSolutionLimit(100)
         .build();
 
     uninitiatedVrpProblem.solve(searchParameters);
     this.solvedSolution = uninitiatedVrpProblem.getSolution();
-    return solvedSolution;
+    OrToolsToOptaplannerAdapter orToolsToOptaplannerAdapter = new OrToolsToOptaplannerAdapter(
+            solvedSolution,
+            uninitiatedVrpProblem.getRoutingIndexManager(),
+            uninitiatedVrpProblem.getRoutingModel());
+    return orToolsToOptaplannerAdapter.convert();
   }
 
-  public VehicleRoutingSolution exportToOptaplannerSolution() {
-    if (this.solvedSolution != null) {
-      OrToolsToOptaplannerAdapter orToolsToOptaplannerAdapter = new OrToolsToOptaplannerAdapter(uninitiatedVrpProblem);
-      return null;
-    } else {
-      LOG.warning("Cannot export null solution");
-      throw new NullPointerException("solvedSolution is null");
-    }
-  }
 
 }
