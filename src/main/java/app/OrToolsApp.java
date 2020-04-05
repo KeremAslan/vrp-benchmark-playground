@@ -47,15 +47,15 @@ public class OrToolsApp {
     if (uninitiatedVrpProblem == null || problemType == null)  {
       throw new NullPointerException("The variable uninitiatedVrpProblem is not yet initialised. Call OptaplannerApp.init() first to initialise a solution");
     }
-
+    int runTimeInMinutes = 1;
     uninitiatedVrpProblem.buildProblem();
     RoutingSearchParameters searchParameters = main
         .defaultRoutingSearchParameters()
         .toBuilder()
         .setFirstSolutionStrategy(FirstSolutionStrategy.Value.AUTOMATIC)
         .setLocalSearchMetaheuristic(LocalSearchMetaheuristic.Value.GUIDED_LOCAL_SEARCH)
-        .setTimeLimit(Duration.newBuilder().setSeconds(60 * 60* 6).build())
-        .setSolutionLimit(100)
+        .setTimeLimit(Duration.newBuilder().setSeconds(runTimeInMinutes* 60).build())
+//        .setSolutionLimit(100)
         .build();
 
     uninitiatedVrpProblem.solve(searchParameters);
