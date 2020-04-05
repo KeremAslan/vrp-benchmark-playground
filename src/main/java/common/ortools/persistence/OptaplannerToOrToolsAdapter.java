@@ -63,7 +63,9 @@ public class OptaplannerToOrToolsAdapter {
             Long travelTime = startDepot.getDistanceTo(DistanceType.STRAIGHT_LINE_DISTANCE, job.getLocation());
             int indexofJob = optaPlannnerModel.getJobs().indexOf(job) + 1;
             // or tools does not provide separate support for service times hence this workaround
-            travelTimesForDepot[indexofJob] = travelTime + ((SintefJob)job).getServiceTime();
+            // Note: or tools computes arrival times so service times need to be part of the travel time in the following
+            // format. TravelTime(a, b) = service_time(a) + travel_time(a, b)
+            travelTimesForDepot[indexofJob] = travelTime;
             demands[indexofJob] = ((SintefJob) job).getDemand();
         }
         timeMatrix[depotIndex] = travelTimesForDepot;
@@ -84,12 +86,14 @@ public class OptaplannerToOrToolsAdapter {
             for (Job job2 : optaPlannnerModel.getJobs()) {
                 int indexOfJob2 = optaPlannnerModel.getJobs().indexOf(job2) + 1;
                 // or tools does not provide separate support for service times hence this workaround of adding service times to time matrix
+                // Note: or tools computes arrival times so service times need to be part of the travel time in the following
+                // format. TravelTime(a, b) = service_time(a) + travel_time(a, b)
                 Long travelTimeBetweenJobs;
                 if (job1.equals(job2)) {
                     travelTimeBetweenJobs = 0L;
                 } else {
-                    travelTimeBetweenJobs = job1.getTravelTimeInSecondsTo(DistanceType.STRAIGHT_LINE_DISTANCE, job2) +
-                            ((SintefJob) job2).getServiceTime();
+                    travelTimeBetweenJobs = ((TimeWindowedJob) job1).getServiceTime() +
+                            job1.getTravelTimeInSecondsTo(DistanceType.STRAIGHT_LINE_DISTANCE, job2);
                 }
                 travelTimesForJob[indexOfJob2] = travelTimeBetweenJobs;
                 timeMatrix[indexOfJob1] = travelTimesForJob;
