@@ -154,7 +154,9 @@ public class OrToolsProblem {
       while (!routingModel.isEnd(index)) {
         totalNumberOfVisitedDrops++;
         IntVar timeVar = timeDimension.cumulVar(index);
-        route += indexManager.indexToNode(index) + " Time (" + solution.min(timeVar) + "," + solution.max(timeVar) + ") -> ";
+        route += indexManager.indexToNode(index) + "/" +
+                " Time(" + solution.min(timeVar) + "," + solution.max(timeVar) + ": " +
+                solution.value(timeVar)+ ") -> ";
         long previousIndex = index;
         index = solution.value(routingModel.nextVar(index));
         visitedNodes.add(Long.valueOf(index).intValue());
