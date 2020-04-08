@@ -17,6 +17,10 @@ public interface VehicleRoutingSolution {
 
   List<Location> getLocations();
 
+  Vehicle getVehicleById(String id);
+
+  Job getJobById(String id);
+
   static void setPreviousStandstill(Job job, Job clonedJob, Map<String, Vehicle> clonedVehicles, Map<String, Job> clonedJobs) {
     if (job.getPreviousStandstill() != null) {
       Standstill previousStandstill;

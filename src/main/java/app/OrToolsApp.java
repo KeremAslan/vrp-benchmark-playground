@@ -23,6 +23,7 @@ public class OrToolsApp {
   private ProblemType problemType;
   private OrToolsProblem uninitiatedVrpProblem;
   private Assignment solvedSolution;
+  private VehicleRoutingSolution optaplannerModel;
 
   public OrToolsApp(ProblemType problemType, File file) {
     this.problemType = problemType;
@@ -33,7 +34,7 @@ public class OrToolsApp {
     switch (problemType) {
       case SINTEF:
         SintefReader sintefReader = new SintefReader();
-        VehicleRoutingSolution optaplannerModel = sintefReader.read(file); //Optaplanner model;
+        optaplannerModel = sintefReader.read(file); //Optaplanner model;
         OptaplannerToOrToolsAdapter adapter = new OptaplannerToOrToolsAdapter(optaplannerModel);
         uninitiatedVrpProblem = adapter.getOrToolsProblem();
         break;
@@ -63,7 +64,8 @@ public class OrToolsApp {
     OrToolsToOptaplannerAdapter orToolsToOptaplannerAdapter = new OrToolsToOptaplannerAdapter(
             solvedSolution,
             uninitiatedVrpProblem.getRoutingIndexManager(),
-            uninitiatedVrpProblem.getRoutingModel());
+            uninitiatedVrpProblem.getRoutingModel(),
+            optaplannerModel);
     return orToolsToOptaplannerAdapter.convert();
   }
 

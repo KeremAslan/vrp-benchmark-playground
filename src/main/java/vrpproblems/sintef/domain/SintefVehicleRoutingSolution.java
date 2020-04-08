@@ -24,6 +24,13 @@ public class SintefVehicleRoutingSolution implements VehicleRoutingSolution {
     this.shift = shift;
   }
 
+  public Vehicle getVehicleById(String id) {
+    return shift.getVehicleById(id);
+  }
+
+  public Job getJobById(String id) {
+    return shift.getJobById(id);
+  }
 
   @PlanningScore
   public HardMediumSoftLongScore getScore() {

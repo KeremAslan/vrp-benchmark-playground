@@ -34,6 +34,14 @@ public abstract class Shift {
     return locations;
   }
 
+  public Vehicle getVehicleById(String id) {
+    return vehicles.stream().filter( vehicle -> vehicle.getId().equalsIgnoreCase(id)).findFirst().orElse(null);
+  }
+
+  public Job getJobById(String id) {
+    return jobs.stream().filter( job -> job.getId().equalsIgnoreCase(id)).findFirst().orElse(null);
+  }
+
   @Override
   public String toString() {
     return "Shift{" +
