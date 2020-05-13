@@ -72,6 +72,7 @@ public class OrToolsToOptaplannerAdapter {
                     Job job = optaplannerModel.getJobById(String.valueOf(jobId));
                     jobToOrToolsIndexMap.put( job, route.get(i));
                     optaplannerSolutionRoute.add(job);
+                    jobs.add(job);
                 }
                 routePlan.put(vehicle, optaplannerSolutionRoute);
             }
@@ -89,6 +90,7 @@ public class OrToolsToOptaplannerAdapter {
                 Job nextJob = route.get(jobIndex+1);
                 job.setNextJob(nextJob);
 
+                job.setVehicle(vehicle);
                 Long ortoolsIndex = jobToOrToolsIndexMap.get(job);
                 job.setArrivalTime(arrivalTimeMap.get(ortoolsIndex));
                 previousStandstill = job;

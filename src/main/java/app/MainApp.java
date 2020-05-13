@@ -9,10 +9,14 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.apache.commons.math3.analysis.function.Sin;
 import org.mvel2.sh.Main;
+import org.optaplanner.core.api.score.Score;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import vrpproblems.ProblemType;
+import vrpproblems.sintef.domain.SintefVehicleRoutingSolution;
+import vrpproblems.sintef.solver.score.SintefEasyScoreCalculator;
 
 import java.io.File;
 
@@ -45,6 +49,7 @@ public class MainApp {
         LOG.info("Running or-tools");
         OrToolsApp orToolsApp = new OrToolsApp(problemType, file);
         VehicleRoutingSolution solvedSolution = orToolsApp.run();
+        computeOptaplannerScore(solvedSolution);
         solvedSolution.export(outputFile);
       } else {
         throw new IllegalArgumentException("Run-mode of " + runMode + " is not recognised.");
@@ -52,6 +57,16 @@ public class MainApp {
 
     } catch (ParseException p) {
       throw new RuntimeException("Could not parse the command line arguments");
+    }
+
+  }
+
+  public static void computeOptaplannerScore(VehicleRoutingSolution problem) {
+    if (problem instanceof  SintefVehicleRoutingSolution) {
+      SintefVehicleRoutingSolution sintefProblem = (SintefVehicleRoutingSolution) problem;
+      SintefEasyScoreCalculator sintefEasyScoreCalculator = new SintefEasyScoreCalculator();
+      Score score = sintefEasyScoreCalculator.calculateScore(sintefProblem);
+      System.out.println(score);
     }
 
   }
