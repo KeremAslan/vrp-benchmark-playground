@@ -63,9 +63,9 @@ public class OrToolsToOptaplannerAdapter {
             Long vehicleId = routingIndexManager.nodeToIndex(routes.getKey().intValue());
             List<Long> route = routes.getValue();
             Vehicle vehicle = optaplannerModel.getVehicleById(String.valueOf(vehicleId));
-            vehicles.add(vehicle);
 
             if (vehicle != null) {
+                vehicles.add(vehicle);
                 List<Job> optaplannerSolutionRoute = new ArrayList<>();
                 for (int i = 0; i < route.size(); i++) {
                     Long jobId = route.get(i);
