@@ -2,6 +2,7 @@ package common.ortools.persistence;
 
 import com.google.ortools.constraintsolver.*;
 import common.optaplanner.basedomain.*;
+import common.optaplanner.basedomain.timewindowed.TimeWindowedJob;
 import vrpproblems.sintef.domain.SintefShift;
 import vrpproblems.sintef.domain.SintefVehicleRoutingSolution;
 
@@ -33,8 +34,10 @@ public class OrToolsToOptaplannerAdapter {
         List<Job> jobs = new ArrayList<>();
         List<Location> locations = new ArrayList<>();
 
+        // extract routes from or-tools
         Map<Long, List<Long>> routesMap = new HashMap<>();
         Map<Long, Long> arrivalTimeMap = new HashMap<>();
+
         RoutingDimension timeDimension = routingModel.getMutableDimension("TravelTime");
         for (int vehicleNo = 0; vehicleNo < 1000; vehicleNo++) {
             long index = routingModel.start(vehicleNo);
@@ -50,35 +53,48 @@ public class OrToolsToOptaplannerAdapter {
 
                 arrivalTimeMap.put(index, arrivalTime);
             }
-            routesMap.put(vehicleIndex, route);
+            routesMap.put(Long.valueOf(vehicleNo), route);
         }
 
+        // populate optaplanner domain models
+        Map<Vehicle, List<Job>> routePlan = new HashMap<>();
+        Map<Job, Long> jobToOrToolsIndexMap = new HashMap<>();
         for (Map.Entry<Long, List<Long>> routes : routesMap.entrySet()) {
-            Long vehicleId = routes.getKey();
+            Long vehicleId = routingIndexManager.nodeToIndex(routes.getKey().intValue());
             List<Long> route = routes.getValue();
             Vehicle vehicle = optaplannerModel.getVehicleById(String.valueOf(vehicleId));
-            System.out.println("Vehicle id " + vehicleId);
-            if (route.size() > 0) {
-                System.out.println("piet");
-            }
-            List<Job> optaroute = new ArrayList<>();
-            for(int i=0; i < route.size(); i++) {
-                Long jobId = route.get(i);
-                Job job = optaplannerModel.getJobById(String.valueOf(jobId));
-                if (i == 0) {
-                    job.setPreviousStandstill(vehicle);
-                    vehicle.setNextJob(job);
+            vehicles.add(vehicle);
+
+            if (vehicle != null) {
+                List<Job> optaplannerSolutionRoute = new ArrayList<>();
+                for (int i = 0; i < route.size(); i++) {
+                    Long jobId = route.get(i);
+                    Job job = optaplannerModel.getJobById(String.valueOf(jobId));
+                    jobToOrToolsIndexMap.put( job, route.get(i));
+                    optaplannerSolutionRoute.add(job);
                 }
-                optaroute.add(job);
-                if (i > 0) {
-                    Job previousJob = optaplannerModel.getJobById(String.valueOf(route.get(i-1)));
-                    previousJob.setNextJob(job);
-                    job.setPreviousStandstill(previousJob);
-                }
+                routePlan.put(vehicle, optaplannerSolutionRoute);
             }
-            System.out.println("finished a route");
 
         }
+
+        // fix planning and shadow variables
+        for (Map.Entry<Vehicle, List<Job>> entry : routePlan.entrySet()) {
+            Vehicle vehicle = entry.getKey();
+            List<Job> route = entry.getValue();
+            Standstill previousStandstill = vehicle;
+            for (int jobIndex=0; jobIndex< route.size()-1; jobIndex++) {
+                TimeWindowedJob job = (TimeWindowedJob) route.get(jobIndex);
+                job.setPreviousStandstill(previousStandstill);
+                Job nextJob = route.get(jobIndex+1);
+                job.setNextJob(nextJob);
+
+                Long ortoolsIndex = jobToOrToolsIndexMap.get(job);
+                job.setArrivalTime(arrivalTimeMap.get(ortoolsIndex));
+                previousStandstill = job;
+            }
+        }
+
 
         Shift shift = new SintefShift(
                 "Or-Tools Solution",
