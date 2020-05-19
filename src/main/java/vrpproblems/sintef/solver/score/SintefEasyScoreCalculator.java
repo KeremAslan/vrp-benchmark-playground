@@ -20,6 +20,8 @@ public class SintefEasyScoreCalculator implements EasyScoreCalculator<SintefVehi
   @Override
   public Score calculateScore(SintefVehicleRoutingSolution sintefSolution) {
 
+    int timeWindowViolations = 0;
+    int capacityViolations = 0;
     int hardScore = 0;
     int numberOfVehicles = 0;
     long totalDistance = 0L;
@@ -48,6 +50,7 @@ public class SintefEasyScoreCalculator implements EasyScoreCalculator<SintefVehi
         }
 
         if(!sintefJob.isArrivalOnTime()) {
+          timeWindowViolations++;
           hardScore--;
         }
       }
@@ -60,6 +63,7 @@ public class SintefEasyScoreCalculator implements EasyScoreCalculator<SintefVehi
       int utilisedCapacity = entry.getValue();
 
       if (utilisedCapacity > capacity) {
+        capacityViolations++;
         hardScore -= (utilisedCapacity - capacity);
       }
 
@@ -67,7 +71,7 @@ public class SintefEasyScoreCalculator implements EasyScoreCalculator<SintefVehi
         numberOfVehicles--;
       }
     }
-
+    System.out.println("Total time window violations " + timeWindowViolations + " total capacity violations " + capacityViolations);
     return HardMediumSoftLongScore.valueOf(hardScore, numberOfVehicles, totalDistance);
   }
 }

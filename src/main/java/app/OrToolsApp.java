@@ -48,7 +48,7 @@ public class OrToolsApp {
     if (uninitiatedVrpProblem == null || problemType == null)  {
       throw new NullPointerException("The variable uninitiatedVrpProblem is not yet initialised. Call OptaplannerApp.init() first to initialise a solution");
     }
-    int runTimeInMinutes = 1;
+    int runTimeInMinutes = 2;
     uninitiatedVrpProblem.buildProblem();
     RoutingSearchParameters searchParameters = main
         .defaultRoutingSearchParameters()

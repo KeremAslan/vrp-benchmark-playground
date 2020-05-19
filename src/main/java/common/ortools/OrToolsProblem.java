@@ -99,7 +99,7 @@ public class OrToolsProblem {
             }
     );
     routingModel.setArcCostEvaluatorOfAllVehicles(transitCallBackIndex);
-    routingModel.addDimension(transitCallBackIndex, 3600, Integer.MAX_VALUE, false, "TravelTime");
+    routingModel.addDimension(transitCallBackIndex, 10000, Integer.MAX_VALUE, false, "TravelTime");
   }
 
   public void setDisjoint() {
@@ -115,7 +115,7 @@ public class OrToolsProblem {
     setCapacityConstrainsts();
     setTravelTimeMatrix();
     setTimeWindowConstraints();
-//    setDisjoint();
+    setDisjoint();
     // set service times
     // Or tools does not support seperate service times, hence this is added to the travel time matrix.
 
@@ -131,8 +131,9 @@ public class OrToolsProblem {
     int status = routingModel.status();
     System.out.println("Size " + size + " status  " + status);
     System.out.println("Duration: " + (end-start)/1000.0 + " seconds");
-    System.out.println("Assignment null ?" + solution);
-    printSolution(routingModel,routingIndexManager, solution );
+    System.out.println("Assignment null ?" + solution == null);
+    System.out.println("Solver status " + routingModel.status());
+//    printSolution(routingModel,routingIndexManager, solution );
   }
 
   public Assignment getSolution() {
