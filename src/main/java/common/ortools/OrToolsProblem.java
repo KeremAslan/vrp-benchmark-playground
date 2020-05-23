@@ -99,6 +99,8 @@ public class OrToolsProblem {
     );
     routingModel.setArcCostEvaluatorOfAllVehicles(transitCallBackIndex);
     routingModel.addDimension(transitCallBackIndex, 10000, Integer.MAX_VALUE, false, "TravelTime");
+    RoutingDimension dimension = routingModel.getDimensionOrDie("TravelTime");
+//    dimension.setGlobalSpanCostCoefficient(100);
   }
 
   public void setDisjoint() {

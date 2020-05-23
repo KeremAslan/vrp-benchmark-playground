@@ -58,6 +58,7 @@ public class OrToolsApp {
         .setFirstSolutionStrategy(FirstSolutionStrategy.Value.AUTOMATIC)
         .setLocalSearchMetaheuristic(LocalSearchMetaheuristic.Value.GUIDED_LOCAL_SEARCH)
         .setTimeLimit(Duration.newBuilder().setSeconds(runTimeInMinutes* 60).build())
+//        .setLogSearch(true)
 //        .setSolutionLimit(100)
         .build();
 

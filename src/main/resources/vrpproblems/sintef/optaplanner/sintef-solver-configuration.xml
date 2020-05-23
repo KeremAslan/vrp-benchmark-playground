@@ -11,9 +11,9 @@
 <!--    <environmentMode>FULL_ASSERT</environmentMode>-->
 
     <scoreDirectorFactory>
-        <!--<easyScoreCalculatorClass>vrpproblems.sintef.solver.score.SintefEasyScoreCalculator</easyScoreCalculatorClass>-->
-        <scoreDrl>vrpproblems/sintef/drools/constraints.drl</scoreDrl>
-        <scoreDrl>vrpproblems/sintef/drools/objectives.drl</scoreDrl>
+        <easyScoreCalculatorClass>vrpproblems.sintef.solver.score.SintefEasyScoreCalculator</easyScoreCalculatorClass>
+<!--        <scoreDrl>vrpproblems/sintef/drools/constraints.drl</scoreDrl>-->
+<!--        <scoreDrl>vrpproblems/sintef/drools/objectives.drl</scoreDrl>-->
         <!--<incrementalScoreCalculatorClass>vrpproblems.sintef.solver.score.SintefIncrementalScoreCalculator</incrementalScoreCalculatorClass>-->
 <!--        <assertionScoreDirectorFactory>-->
 <!--            <easyScoreCalculatorClass>vrpproblems.sintef.solver.score.SintefEasyScoreCalculator</easyScoreCalculatorClass>-->

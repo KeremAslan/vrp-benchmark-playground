@@ -38,6 +38,7 @@ public class MainApp {
 
       if (runMode.equalsIgnoreCase("benchmark")) {
         String folderToBenchmark = cl.getOptionValue("f");
+        String outputPath = cl.getOptionValue("o");
         File folder = new File(folderToBenchmark);
         Map<String, Score> optaplannerScores = new HashMap<>();
         Map<String, Score> ortoolsScores = new HashMap<>();
@@ -46,12 +47,11 @@ public class MainApp {
           Score ortoolsScore = runOrTools(file.getPath(), problemType, runtimeInMinutes);
           optaplannerScores.put(file.getName(), optaplannerScore);
           ortoolsScores.put(file.getName(), ortoolsScore);
-          break;
+//          break;
         }
-        writeResultsToCsv(ortoolsScores, optaplannerScores, "output.csv");
+        writeResultsToCsv(ortoolsScores, optaplannerScores, outputPath);
       } else {
         String pathToFile = cl.getOptionValue("f");
-        outputFile = cl.getOptionValue("o");
 
         if (runMode.equalsIgnoreCase("optaplanner")) {
           LOG.info("Running optaplanner");
