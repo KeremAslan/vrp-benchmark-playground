@@ -32,6 +32,7 @@ public class MainApp {
     ProblemType problemType = null;
     File file = null;
     File outputFile;
+    String runtimeInMinutes;
 
     try {
       CommandLineParser commandLineParser = new DefaultParser();
@@ -40,24 +41,35 @@ public class MainApp {
       file = new File(cl.getOptionValue("f"));
       problemType =  ProblemType.getProblemTypeByString(cl.getOptionValue("p"));
       outputFile = new File(cl.getOptionValue("o"));
+
+      runtimeInMinutes = cl.getOptionValue("runtimeInMinutes");
       if (runMode.equalsIgnoreCase("optaplanner")) {
         LOG.info("Running optaplanner");
         OptaplannerApp optaplannerApp = new OptaplannerApp(problemType, file);
-        VehicleRoutingSolution solvedSolution = optaplannerApp.run();
+        VehicleRoutingSolution solvedSolution = optaplannerApp.run(Integer.valueOf(runtimeInMinutes));
         solvedSolution.export(outputFile);
       } else if (runMode.equalsIgnoreCase("or-tools")) {
         LOG.info("Running or-tools");
         OrToolsApp orToolsApp = new OrToolsApp(problemType, file);
-        VehicleRoutingSolution solvedSolution = orToolsApp.run();
+        VehicleRoutingSolution solvedSolution = orToolsApp.run(Integer.valueOf(runtimeInMinutes));
         computeOptaplannerScore(solvedSolution);
         solvedSolution.export(outputFile);
-      } else {
+      } else if (runMode.equalsIgnoreCase("benchmark")) {
+        String folderToBenchmark = cl.getOptionValue("folder");
+
+      }
+
+      else {
         throw new IllegalArgumentException("Run-mode of " + runMode + " is not recognised.");
       }
 
     } catch (ParseException p) {
       throw new RuntimeException("Could not parse the command line arguments");
     }
+
+  }
+
+  public static void runBenchmark() {
 
   }
 
@@ -116,6 +128,13 @@ public class MainApp {
         .hasArg()
         .required(false)
         .build());
+    options.addOption(Option.builder("rt")
+            .longOpt("runtimeInMinutes")
+            .desc("The runtime in minutes for the problem")
+            .numberOfArgs(1)
+            .hasArg()
+            .required(false)
+            .build());
     return options;
   }
 }
