@@ -44,11 +44,13 @@ public class OrToolsApp {
     }
   }
 
-  public VehicleRoutingSolution run() {
+  public VehicleRoutingSolution run(Integer runTimeInMinutes) {
     if (uninitiatedVrpProblem == null || problemType == null)  {
       throw new NullPointerException("The variable uninitiatedVrpProblem is not yet initialised. Call OptaplannerApp.init() first to initialise a solution");
     }
-    int runTimeInMinutes = 2;
+    if (runTimeInMinutes == null) {
+      runTimeInMinutes = 1;
+    }
     uninitiatedVrpProblem.buildProblem();
     RoutingSearchParameters searchParameters = main
         .defaultRoutingSearchParameters()
@@ -66,6 +68,7 @@ public class OrToolsApp {
             uninitiatedVrpProblem.getRoutingIndexManager(),
             uninitiatedVrpProblem.getRoutingModel(),
             optaplannerModel);
+
     return orToolsToOptaplannerAdapter.convert();
   }
 

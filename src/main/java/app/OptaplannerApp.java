@@ -42,7 +42,7 @@ public class OptaplannerApp {
    * Runs Optaplanner, stores and returns the solved solution.
    */
 
-  public VehicleRoutingSolution run() {
+  public VehicleRoutingSolution run(Integer runtimeInMinutes) {
     if (uninitiatedVrpProblem == null || problemType == null)  {
       throw new NullPointerException("The variable uninitiatedVrpProblem is not yet initialised. Call OptaplannerApp.init() first to initialise a solution");
     }
@@ -58,7 +58,11 @@ public class OptaplannerApp {
 
     LOG.info("Starting optimisation of problem type " + problemType);
     SolverFactory<VehicleRoutingSolution> solverFactory = SolverFactory.createFromXmlResource(optaplannerConfigurationFile);
+    if (runtimeInMinutes != null) {
+      solverFactory.getSolverConfig().getTerminationConfig().setSecondsSpentLimit(runtimeInMinutes * 60L);
+    }
     Solver<VehicleRoutingSolution> solver = solverFactory.buildSolver();
+
     this.solvedSolution = solver.solve(uninitiatedVrpProblem);
     return solvedSolution;
   }
