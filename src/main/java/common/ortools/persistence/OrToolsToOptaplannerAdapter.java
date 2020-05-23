@@ -94,7 +94,7 @@ public class OrToolsToOptaplannerAdapter {
                 job.setVehicle(vehicle);
                 Long ortoolsIndex = jobToOrToolsIndexMap.get(job);
                 long arrivalTime = arrivalTimeMap.get(ortoolsIndex);
-                job.setArrivalTime(arrivalTimeMap.get(ortoolsIndex));
+                job.setArrivalTime(arrivalTime);
                 previousStandstill = job;
             }
         }
