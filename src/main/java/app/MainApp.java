@@ -11,6 +11,8 @@ import vrpproblems.sintef.domain.SintefVehicleRoutingSolution;
 import vrpproblems.sintef.solver.score.SintefEasyScoreCalculator;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainApp {
 
@@ -35,13 +37,18 @@ public class MainApp {
       if (runMode.equalsIgnoreCase("benchmark")) {
         String folderToBenchmark = cl.getOptionValue("f");
         File folder = new File(folderToBenchmark);
+        Map<String, Score> optaplannerScores = new HashMap<>();
+        Map<String, Score> ortoolsScores = new HashMap<>();
         for(File file : folder.listFiles()) {
-          runOptaplanner(file.toString(), problemType, runtimeInMinutes, "");
-          runOrTools(file.toString(), problemType, runtimeInMinutes, "");
+          Score optaplannerScore = runOptaplanner(file.getPath(), problemType, runtimeInMinutes, "");
+          Score ortoolsScore = runOrTools(file.getPath(), problemType, runtimeInMinutes, "");
+          optaplannerScores.put(file.getName(), optaplannerScore);
+          ortoolsScores.put(file.getName(), ortoolsScore);
         }
       } else {
         String pathToFile = cl.getOptionValue("f");
         outputFile = cl.getOptionValue("o");
+
         if (runMode.equalsIgnoreCase("optaplanner")) {
           LOG.info("Running optaplanner");
           runOptaplanner(pathToFile, problemType, runtimeInMinutes, outputFile);
@@ -58,28 +65,30 @@ public class MainApp {
 
   }
 
-  public static void runOptaplanner(String path, ProblemType problemType, String runtimeInMinutes, String outputPath) {
+  public static Score runOptaplanner(String path, ProblemType problemType, String runtimeInMinutes, String outputPath) {
     File file = new File(path);
     OptaplannerApp optaplannerApp = new OptaplannerApp(problemType, file);
     VehicleRoutingSolution solvedSolution = optaplannerApp.run(Integer.valueOf(runtimeInMinutes));
-    solvedSolution.export(new File(outputPath));
+//    solvedSolution.export(new File(outputPath));
+    return solvedSolution.getScore();
   }
 
-  public static void runOrTools(String path, ProblemType problemType, String runtimeInMinutes, String outputPath) {
+  public static Score runOrTools(String path, ProblemType problemType, String runtimeInMinutes, String outputPath) {
     File file = new File(path);
     OrToolsApp orToolsApp = new OrToolsApp(problemType, file);
     VehicleRoutingSolution solvedSolution = orToolsApp.run(Integer.valueOf(runtimeInMinutes));
     computeOptaplannerScore(solvedSolution);
-    solvedSolution.export(new File(outputPath));
+//    solvedSolution.export(new File(outputPath));
+    return solvedSolution.getScore();
   }
 
-  public static void computeOptaplannerScore(VehicleRoutingSolution problem) {
+  public static Score computeOptaplannerScore(VehicleRoutingSolution problem) {
     if (problem instanceof  SintefVehicleRoutingSolution) {
       SintefVehicleRoutingSolution sintefProblem = (SintefVehicleRoutingSolution) problem;
       SintefEasyScoreCalculator sintefEasyScoreCalculator = new SintefEasyScoreCalculator();
-      Score score = sintefEasyScoreCalculator.calculateScore(sintefProblem);
-      System.out.println(score);
+      return sintefEasyScoreCalculator.calculateScore(sintefProblem);
     }
+    throw new RuntimeException("Something went wrong when trying to compute Optaplanner score for ortools solution");
 
   }
 

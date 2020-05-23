@@ -2,6 +2,8 @@ package common.optaplanner.basedomain;
 
 
 
+import org.optaplanner.core.api.score.Score;
+
 import java.io.File;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +22,8 @@ public interface VehicleRoutingSolution {
   Vehicle getVehicleById(String id);
 
   Job getJobById(String id);
+
+  Score getScore();
 
   static void setPreviousStandstill(Job job, Job clonedJob, Map<String, Vehicle> clonedVehicles, Map<String, Job> clonedJobs) {
     if (job.getPreviousStandstill() != null) {

@@ -11,6 +11,8 @@ import org.optaplanner.core.api.score.buildin.bendablelong.BendableLongScore;
 import org.optaplanner.core.api.score.buildin.hardmediumsoftlong.HardMediumSoftLongScore;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 @PlanningSolution(solutionCloner = SintefVehicleRoutingSolutionCloner.class)
@@ -77,6 +79,13 @@ public class SintefVehicleRoutingSolution implements VehicleRoutingSolution {
 
   @Override
   public void export(File file) {
+//    try {
+//      FileWriter fileWriter = new FileWriter(file);
+//
+//    } catch (IOException ex ) {
+//      throw new RuntimeException("Couldn't write to file " + file);
+//    }
+
     throw new NotImplementedException("Export for SintefSolution is not yet implemented");
   }
 
