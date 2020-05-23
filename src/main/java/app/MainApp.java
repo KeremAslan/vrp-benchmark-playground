@@ -48,7 +48,7 @@ public class MainApp {
           ortoolsScores.put(file.getName(), ortoolsScore);
           break;
         }
-        writeResultsToCsv(optaplannerScores, ortoolsScores, "output.csv");
+        writeResultsToCsv(ortoolsScores, optaplannerScores, "output.csv");
       } else {
         String pathToFile = cl.getOptionValue("f");
         outputFile = cl.getOptionValue("o");
@@ -111,7 +111,7 @@ public class MainApp {
         String violations =   splittedScore[1];
         String noVehicles =  splittedScore[2];
         String totalDistance =  splittedScore[3];
-        List<String> row = Arrays.asList(solver, entry.getKey(), unassignedJobs, violations, noVehicles, totalDistance);
+        List<String> row = Arrays.asList(entry.getKey(), solver, unassignedJobs, violations, noVehicles, totalDistance);
         extractedRows.add(row);
       }
     }
