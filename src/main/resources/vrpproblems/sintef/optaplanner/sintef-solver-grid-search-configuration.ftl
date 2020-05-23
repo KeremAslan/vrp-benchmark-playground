@@ -6,16 +6,16 @@
     <parallelBenchmarkCount>AUTO</parallelBenchmarkCount>
     <inheritedSolverBenchmark>
         <problemBenchmarks>
-
             <solutionFileIOClass>vrpproblems.sintef.persistence.SintefReaderAdaptor</solutionFileIOClass>
-            <inputSolutionFile>input/sintef/1000_customer_instances/C1_10_2.TXT</inputSolutionFile>
-            <inputSolutionFile>input/sintef/1000_customer_instances/C1_10_3.TXT</inputSolutionFile>
-            <inputSolutionFile>input/sintef/1000_customer_instances/C2_10_1.TXT</inputSolutionFile>
-            <inputSolutionFile>input/sintef/1000_customer_instances/C2_10_2.TXT</inputSolutionFile>
-            <inputSolutionFile>input/sintef/1000_customer_instances/R1_10_1.TXT</inputSolutionFile>
-            <inputSolutionFile>input/sintef/1000_customer_instances/R2_10_4.TXT</inputSolutionFile>
-            <inputSolutionFile>input/sintef/1000_customer_instances/RC1_10_4.TXT</inputSolutionFile>
-            <inputSolutionFile>input/sintef/1000_customer_instances/RC2_10_4.TXT</inputSolutionFile>
+           <inputSolutionFile>input/sintef/homberger_1000_customer_instances/R1_10_2.TXT</inputSolutionFile>
+           <inputSolutionFile>input/sintef/homberger_1000_customer_instances/RC1_10_3.TXT</inputSolutionFile>
+           <inputSolutionFile>input/sintef/homberger_1000_customer_instances/RC2_10_1.TXT</inputSolutionFile>
+            <inputSolutionFile>input/sintef/homberger_600_customer_instances/C1_6_2.TXT</inputSolutionFile>
+            <inputSolutionFile>input/sintef/homberger_600_customer_instances/R1_6_2.TXT</inputSolutionFile>
+            <inputSolutionFile>input/sintef/homberger_600_customer_instances/RC1_6_3.TXT</inputSolutionFile>
+           <inputSolutionFile>input/sintef/homberger_200_customer_instances/C1_2_2.TXT</inputSolutionFile>
+           <inputSolutionFile>input/sintef/homberger_200_customer_instances/R1_2_2.TXT</inputSolutionFile>
+           <inputSolutionFile>input/sintef/homberger_200_customer_instances/RC1_2_3.TXT</inputSolutionFile>
         </problemBenchmarks>
 
         <solver>
@@ -33,10 +33,10 @@
 
             <constructionHeuristic>
                 <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
-                <changeMoveSelector>
+<!--                <changeMoveSelector>-->
                     <!-- <valueSelector variableName="previousStandstill"></valueSelector> -->
-                    <selectedCountLimit>100</selectedCountLimit>
-                </changeMoveSelector>
+<!--                    <selectedCountLimit>100</selectedCountLimit>-->
+<!--                </changeMoveSelector>-->
             </constructionHeuristic>
 
             

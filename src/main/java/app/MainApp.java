@@ -42,8 +42,8 @@ public class MainApp {
         Map<String, Score> optaplannerScores = new HashMap<>();
         Map<String, Score> ortoolsScores = new HashMap<>();
         for(File file : folder.listFiles()) {
-          Score optaplannerScore = runOptaplanner(file.getPath(), problemType, runtimeInMinutes, "");
-          Score ortoolsScore = runOrTools(file.getPath(), problemType, runtimeInMinutes, "");
+          Score optaplannerScore = runOptaplanner(file.getPath(), problemType, runtimeInMinutes);
+          Score ortoolsScore = runOrTools(file.getPath(), problemType, runtimeInMinutes);
           optaplannerScores.put(file.getName(), optaplannerScore);
           ortoolsScores.put(file.getName(), ortoolsScore);
           break;
@@ -55,10 +55,10 @@ public class MainApp {
 
         if (runMode.equalsIgnoreCase("optaplanner")) {
           LOG.info("Running optaplanner");
-          runOptaplanner(pathToFile, problemType, runtimeInMinutes, outputFile);
+          runOptaplanner(pathToFile, problemType, runtimeInMinutes);
         } else if (runMode.equalsIgnoreCase("or-tools")) {
           LOG.info("Running or-tools");
-          runOrTools(pathToFile, problemType, runtimeInMinutes, outputFile);
+          runOrTools(pathToFile, problemType, runtimeInMinutes);
         } else {
           throw new IllegalArgumentException("Run-mode of " + runMode + " is not recognised.");
         }
@@ -71,12 +71,13 @@ public class MainApp {
 
   public static void writeResultsToCsv(Map<String, Score> ortoolsScore, Map<String, Score> optplannerScore, String filePath) {
     List<List<String>> rows = new ArrayList<>();
-    rows.addAll(extractRowsFromMap(ortoolsScore));
-    rows.addAll(extractRowsFromMap(optplannerScore));
+    rows.addAll(extractRowsFromMap(ortoolsScore, "ortools"));
+    rows.addAll(extractRowsFromMap(optplannerScore, "optaplanner"));
     try {
       FileWriter csvWriter = new FileWriter(filePath);
 
-      csvWriter.append("Problem")
+      csvWriter.append("problem")
+              .append(",").append("solver")
               .append(",").append("unassignedjobs")
               .append(",").append("violations")
               .append(",").append("noVehicles")
@@ -95,7 +96,7 @@ public class MainApp {
 
   }
 
-  public static List<List<String>> extractRowsFromMap(Map<String, Score> scoreMap) {
+  public static List<List<String>> extractRowsFromMap(Map<String, Score> scoreMap, String solver) {
     List<List<String>> extractedRows = new ArrayList<>();
     if (scoreMap != null) {
       for (Map.Entry<String, Score> entry : scoreMap.entrySet()) {
@@ -110,27 +111,25 @@ public class MainApp {
         String violations =   splittedScore[1];
         String noVehicles =  splittedScore[2];
         String totalDistance =  splittedScore[3];
-        List<String> row = Arrays.asList(entry.getKey(), unassignedJobs, violations, noVehicles, totalDistance);
+        List<String> row = Arrays.asList(solver, entry.getKey(), unassignedJobs, violations, noVehicles, totalDistance);
         extractedRows.add(row);
       }
     }
     return extractedRows;
   }
 
-  public static Score runOptaplanner(String path, ProblemType problemType, String runtimeInMinutes, String outputPath) {
+  public static Score runOptaplanner(String path, ProblemType problemType, String runtimeInMinutes) {
     File file = new File(path);
     OptaplannerApp optaplannerApp = new OptaplannerApp(problemType, file);
     VehicleRoutingSolution solvedSolution = optaplannerApp.run(Integer.valueOf(runtimeInMinutes));
-//    solvedSolution.export(new File(outputPath));
     return solvedSolution.getScore();
   }
 
-  public static Score runOrTools(String path, ProblemType problemType, String runtimeInMinutes, String outputPath) {
+  public static Score runOrTools(String path, ProblemType problemType, String runtimeInMinutes) {
     File file = new File(path);
     OrToolsApp orToolsApp = new OrToolsApp(problemType, file);
     VehicleRoutingSolution solvedSolution = orToolsApp.run(Integer.valueOf(runtimeInMinutes));
     Score score = computeOptaplannerScore(solvedSolution);
-//    solvedSolution.export(new File(outputPath));
     return score;
   }
 

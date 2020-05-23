@@ -94,7 +94,6 @@ public class OrToolsProblem {
               int fromNode = routingIndexManager.indexToNode(fromIndex);
               int toNode = routingIndexManager.indexToNode(toIndex);
               long traveltime =  timeMatrix[fromNode][toNode];
-//              System.out.println("In transit call back " + fromIndex  + "-" + toIndex + " travel time " + traveltime);
               return traveltime;
             }
     );
