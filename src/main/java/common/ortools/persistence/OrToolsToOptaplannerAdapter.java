@@ -48,10 +48,10 @@ public class OrToolsToOptaplannerAdapter {
                     route.add(index);
                 }
                 IntVar timeVar = timeDimension.cumulVar(index);
-                index = assignment.value(routingModel.nextVar(index));
                 long arrivalTime = assignment.value(timeVar);
-
                 arrivalTimeMap.put(index, arrivalTime);
+
+                index = assignment.value(routingModel.nextVar(index));
             }
 
             routesMap.put(Integer.valueOf(vehicleNo).longValue(), route);
@@ -70,7 +70,8 @@ public class OrToolsToOptaplannerAdapter {
                 for (int i = 0; i < route.size(); i++) {
                     Long jobId = route.get(i);
                     Job job = optaplannerModel.getJobById(String.valueOf(jobId));
-                    jobToOrToolsIndexMap.put( job, route.get(i));
+
+                    jobToOrToolsIndexMap.put( job, jobId);
                     optaplannerSolutionRoute.add(job);
                     jobs.add(job);
                 }
@@ -92,6 +93,7 @@ public class OrToolsToOptaplannerAdapter {
 
                 job.setVehicle(vehicle);
                 Long ortoolsIndex = jobToOrToolsIndexMap.get(job);
+                long arrivalTime = arrivalTimeMap.get(ortoolsIndex);
                 job.setArrivalTime(arrivalTimeMap.get(ortoolsIndex));
                 previousStandstill = job;
             }
