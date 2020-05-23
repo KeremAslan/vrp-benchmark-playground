@@ -30,6 +30,7 @@ public class OrToolsToOptaplannerAdapter {
 
     public VehicleRoutingSolution convert() {
 //        this.assignment.
+        int noVehicles = optaplannerModel.getVehicles().size();
         List<Vehicle> vehicles = new ArrayList<>();
         List<Job> jobs = new ArrayList<>();
         List<Location> locations = new ArrayList<>();
@@ -39,7 +40,7 @@ public class OrToolsToOptaplannerAdapter {
         Map<Long, Long> arrivalTimeMap = new HashMap<>();
 
         RoutingDimension timeDimension = routingModel.getMutableDimension("TravelTime");
-        for (int vehicleNo = 0; vehicleNo < 1000; vehicleNo++) {
+        for (int vehicleNo = 0; vehicleNo < noVehicles; vehicleNo++) {
             long index = routingModel.start(vehicleNo);
             long vehicleIndex = index;
             List<Long> route = new ArrayList<>();
@@ -53,7 +54,7 @@ public class OrToolsToOptaplannerAdapter {
 
                 arrivalTimeMap.put(index, arrivalTime);
             }
-            routesMap.put(Long.valueOf(vehicleNo), route);
+            routesMap.put(Long.valueOf(vehicleIndex), route);
         }
 
         // populate optaplanner domain models
