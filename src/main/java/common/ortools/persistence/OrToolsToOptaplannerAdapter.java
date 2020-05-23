@@ -34,7 +34,6 @@ public class OrToolsToOptaplannerAdapter {
         List<Vehicle> vehicles = new ArrayList<>();
         List<Job> jobs = new ArrayList<>();
         List<Location> locations = new ArrayList<>();
-
         // extract routes from or-tools
         Map<Long, List<Long>> routesMap = new HashMap<>();
         Map<Long, Long> arrivalTimeMap = new HashMap<>();
@@ -42,7 +41,7 @@ public class OrToolsToOptaplannerAdapter {
         RoutingDimension timeDimension = routingModel.getMutableDimension("TravelTime");
         for (int vehicleNo = 0; vehicleNo < noVehicles; vehicleNo++) {
             long index = routingModel.start(vehicleNo);
-            long vehicleIndex = index;
+
             List<Long> route = new ArrayList<>();
             while (!routingModel.isEnd(index)) {
                 if (!routingModel.isStart(index)) {
@@ -54,16 +53,16 @@ public class OrToolsToOptaplannerAdapter {
 
                 arrivalTimeMap.put(index, arrivalTime);
             }
-            routesMap.put(Long.valueOf(vehicleIndex), route);
+
+            routesMap.put(Integer.valueOf(vehicleNo).longValue(), route);
         }
 
         // populate optaplanner domain models
         Map<Vehicle, List<Job>> routePlan = new HashMap<>();
         Map<Job, Long> jobToOrToolsIndexMap = new HashMap<>();
         for (Map.Entry<Long, List<Long>> routes : routesMap.entrySet()) {
-            Long vehicleId = routingIndexManager.nodeToIndex(routes.getKey().intValue());
             List<Long> route = routes.getValue();
-            Vehicle vehicle = optaplannerModel.getVehicleById(String.valueOf(vehicleId));
+            Vehicle vehicle = optaplannerModel.getVehicleById(String.valueOf(routes.getKey()));
 
             if (vehicle != null) {
                 vehicles.add(vehicle);
