@@ -2,6 +2,7 @@ package app;
 
 import common.optaplanner.basedomain.VehicleRoutingSolution;
 import org.apache.commons.cli.*;
+import org.apache.commons.lang3.StringUtils;
 import org.mvel2.sh.Main;
 import org.optaplanner.core.api.score.Score;
 import org.slf4j.Logger;
@@ -11,8 +12,9 @@ import vrpproblems.sintef.domain.SintefVehicleRoutingSolution;
 import vrpproblems.sintef.solver.score.SintefEasyScoreCalculator;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
 
 public class MainApp {
 
@@ -44,7 +46,9 @@ public class MainApp {
           Score ortoolsScore = runOrTools(file.getPath(), problemType, runtimeInMinutes, "");
           optaplannerScores.put(file.getName(), optaplannerScore);
           ortoolsScores.put(file.getName(), ortoolsScore);
+          break;
         }
+        writeResultsToCsv(optaplannerScores, ortoolsScores, "output.csv");
       } else {
         String pathToFile = cl.getOptionValue("f");
         outputFile = cl.getOptionValue("o");
@@ -65,6 +69,54 @@ public class MainApp {
 
   }
 
+  public static void writeResultsToCsv(Map<String, Score> ortoolsScore, Map<String, Score> optplannerScore, String filePath) {
+    List<List<String>> rows = new ArrayList<>();
+    rows.addAll(extractRowsFromMap(ortoolsScore));
+    rows.addAll(extractRowsFromMap(optplannerScore));
+    try {
+      FileWriter csvWriter = new FileWriter(filePath);
+
+      csvWriter.append("Problem")
+              .append(",").append("unassignedjobs")
+              .append(",").append("violations")
+              .append(",").append("noVehicles")
+              .append(",").append("totalDistance")
+              .append("\n");
+
+      for (List<String> row : rows) {
+        csvWriter.append(String.join(",", row));
+        csvWriter.append("\n");
+      }
+      csvWriter.flush();
+      csvWriter.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+  }
+
+  public static List<List<String>> extractRowsFromMap(Map<String, Score> scoreMap) {
+    List<List<String>> extractedRows = new ArrayList<>();
+    if (scoreMap != null) {
+      for (Map.Entry<String, Score> entry : scoreMap.entrySet()) {
+        String score = entry.getValue().toString();
+        score = StringUtils.remove(score, "[" );
+        score = StringUtils.remove(score, "]");
+        score = StringUtils.remove(score, "hard");
+        score = StringUtils.remove(score, "soft");
+        String[] splittedScore = StringUtils.split(score, "/");
+
+        String unassignedJobs = splittedScore[0];
+        String violations =   splittedScore[1];
+        String noVehicles =  splittedScore[2];
+        String totalDistance =  splittedScore[3];
+        List<String> row = Arrays.asList(entry.getKey(), unassignedJobs, violations, noVehicles, totalDistance);
+        extractedRows.add(row);
+      }
+    }
+    return extractedRows;
+  }
+
   public static Score runOptaplanner(String path, ProblemType problemType, String runtimeInMinutes, String outputPath) {
     File file = new File(path);
     OptaplannerApp optaplannerApp = new OptaplannerApp(problemType, file);
@@ -77,9 +129,9 @@ public class MainApp {
     File file = new File(path);
     OrToolsApp orToolsApp = new OrToolsApp(problemType, file);
     VehicleRoutingSolution solvedSolution = orToolsApp.run(Integer.valueOf(runtimeInMinutes));
-    computeOptaplannerScore(solvedSolution);
+    Score score = computeOptaplannerScore(solvedSolution);
 //    solvedSolution.export(new File(outputPath));
-    return solvedSolution.getScore();
+    return score;
   }
 
   public static Score computeOptaplannerScore(VehicleRoutingSolution problem) {
