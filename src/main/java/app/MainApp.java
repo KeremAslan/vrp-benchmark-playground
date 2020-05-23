@@ -1,15 +1,7 @@
 package app;
 
-import com.google.ortools.constraintsolver.Assignment;
 import common.optaplanner.basedomain.VehicleRoutingSolution;
-import common.ortools.OrToolsProblem;
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.Option;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
-import org.apache.commons.math3.analysis.function.Sin;
+import org.apache.commons.cli.*;
 import org.mvel2.sh.Main;
 import org.optaplanner.core.api.score.Score;
 import org.slf4j.Logger;
@@ -30,47 +22,55 @@ public class MainApp {
     Options options = getOptions();
 
     ProblemType problemType = null;
-    File file = null;
-    File outputFile;
+    String outputFile;
     String runtimeInMinutes;
 
     try {
       CommandLineParser commandLineParser = new DefaultParser();
       CommandLine cl = commandLineParser.parse(options, args);
       String runMode = cl.getOptionValue("m");
-      file = new File(cl.getOptionValue("f"));
-      problemType =  ProblemType.getProblemTypeByString(cl.getOptionValue("p"));
-      outputFile = new File(cl.getOptionValue("o"));
-
       runtimeInMinutes = cl.getOptionValue("runtimeInMinutes");
-      if (runMode.equalsIgnoreCase("optaplanner")) {
-        LOG.info("Running optaplanner");
-        OptaplannerApp optaplannerApp = new OptaplannerApp(problemType, file);
-        VehicleRoutingSolution solvedSolution = optaplannerApp.run(Integer.valueOf(runtimeInMinutes));
-        solvedSolution.export(outputFile);
-      } else if (runMode.equalsIgnoreCase("or-tools")) {
-        LOG.info("Running or-tools");
-        OrToolsApp orToolsApp = new OrToolsApp(problemType, file);
-        VehicleRoutingSolution solvedSolution = orToolsApp.run(Integer.valueOf(runtimeInMinutes));
-        computeOptaplannerScore(solvedSolution);
-        solvedSolution.export(outputFile);
-      } else if (runMode.equalsIgnoreCase("benchmark")) {
-        String folderToBenchmark = cl.getOptionValue("folder");
+      problemType =  ProblemType.getProblemTypeByString(cl.getOptionValue("p"));
 
+      if (runMode.equalsIgnoreCase("benchmark")) {
+        String folderToBenchmark = cl.getOptionValue("f");
+        File folder = new File(folderToBenchmark);
+        for(File file : folder.listFiles()) {
+          runOptaplanner(file.toString(), problemType, runtimeInMinutes, "");
+          runOrTools(file.toString(), problemType, runtimeInMinutes, "");
+        }
+      } else {
+        String pathToFile = cl.getOptionValue("f");
+        outputFile = cl.getOptionValue("o");
+        if (runMode.equalsIgnoreCase("optaplanner")) {
+          LOG.info("Running optaplanner");
+          runOptaplanner(pathToFile, problemType, runtimeInMinutes, outputFile);
+        } else if (runMode.equalsIgnoreCase("or-tools")) {
+          LOG.info("Running or-tools");
+          runOrTools(pathToFile, problemType, runtimeInMinutes, outputFile);
+        } else {
+          throw new IllegalArgumentException("Run-mode of " + runMode + " is not recognised.");
+        }
       }
-
-      else {
-        throw new IllegalArgumentException("Run-mode of " + runMode + " is not recognised.");
-      }
-
     } catch (ParseException p) {
       throw new RuntimeException("Could not parse the command line arguments");
     }
 
   }
 
-  public static void runBenchmark() {
+  public static void runOptaplanner(String path, ProblemType problemType, String runtimeInMinutes, String outputPath) {
+    File file = new File(path);
+    OptaplannerApp optaplannerApp = new OptaplannerApp(problemType, file);
+    VehicleRoutingSolution solvedSolution = optaplannerApp.run(Integer.valueOf(runtimeInMinutes));
+    solvedSolution.export(new File(outputPath));
+  }
 
+  public static void runOrTools(String path, ProblemType problemType, String runtimeInMinutes, String outputPath) {
+    File file = new File(path);
+    OrToolsApp orToolsApp = new OrToolsApp(problemType, file);
+    VehicleRoutingSolution solvedSolution = orToolsApp.run(Integer.valueOf(runtimeInMinutes));
+    computeOptaplannerScore(solvedSolution);
+    solvedSolution.export(new File(outputPath));
   }
 
   public static void computeOptaplannerScore(VehicleRoutingSolution problem) {
