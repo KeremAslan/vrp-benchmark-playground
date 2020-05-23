@@ -133,7 +133,7 @@ public class OrToolsProblem {
     System.out.println("Duration: " + (end-start)/1000.0 + " seconds");
     System.out.println("Assignment null ?" + solution == null);
     System.out.println("Solver status " + routingModel.status());
-//    printSolution(routingModel,routingIndexManager, solution );
+    printSolution(routingModel,routingIndexManager, solution );
   }
 
   public Assignment getSolution() {

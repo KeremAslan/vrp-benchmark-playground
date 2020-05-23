@@ -7,6 +7,7 @@ import org.optaplanner.core.api.domain.solution.PlanningScore;
 import org.optaplanner.core.api.domain.solution.PlanningSolution;
 import org.optaplanner.core.api.domain.solution.drools.ProblemFactCollectionProperty;
 import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
+import org.optaplanner.core.api.score.buildin.bendablelong.BendableLongScore;
 import org.optaplanner.core.api.score.buildin.hardmediumsoftlong.HardMediumSoftLongScore;
 
 import java.io.File;
@@ -18,7 +19,7 @@ public class SintefVehicleRoutingSolution implements VehicleRoutingSolution {
 
   private Shift shift;
 
-  private HardMediumSoftLongScore score;
+  private BendableLongScore score;
 
   public SintefVehicleRoutingSolution(Shift shift) {
     this.shift = shift;
@@ -32,12 +33,12 @@ public class SintefVehicleRoutingSolution implements VehicleRoutingSolution {
     return shift.getJobById(id);
   }
 
-  @PlanningScore
-  public HardMediumSoftLongScore getScore() {
+  @PlanningScore(bendableHardLevelsSize = 2, bendableSoftLevelsSize = 2)
+  public BendableLongScore getScore() {
     return score;
   }
 
-  public void setScore(HardMediumSoftLongScore score) {
+  public void setScore(BendableLongScore score) {
     this.score = score;
   }
 

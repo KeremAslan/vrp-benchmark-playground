@@ -5,14 +5,15 @@ import common.optaplanner.basedomain.timewindowed.TimeWindowedJob;
 import vrpproblems.sintef.domain.SintefVehicle;
 import vrpproblems.sintef.domain.SintefJob;
 import org.optaplanner.core.api.score.buildin.hardmediumsoftlong.HardMediumSoftLongScoreHolder;
+import org.optaplanner.core.api.score.buildin.bendablelong.BendableLongScoreHolder;
 
-global HardMediumSoftLongScoreHolder scoreHolder;
+global BendableLongScoreHolder scoreHolder;
 
 rule "A job should only take place during a job's timewindow"
     when
         TimeWindowedJob(previousStandstill != null, !isArrivalOnTime())
     then
-        scoreHolder.addHardConstraintMatch(kcontext, -1);
+        scoreHolder.addHardConstraintMatch(kcontext, 1, -1);
 end
 
 
@@ -28,7 +29,7 @@ rule "A vehicle cannot carry more items than its capacity"
             $totalDemand > $capacity
         )
     then
-        scoreHolder.addHardConstraintMatch(kcontext, -($totalDemand-$capacity));
+        scoreHolder.addHardConstraintMatch(kcontext, 1,  -($totalDemand-$capacity));
 end
 
 

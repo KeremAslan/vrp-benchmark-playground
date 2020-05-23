@@ -2,17 +2,18 @@ package vrpproblems.sintef.drools;
 dialect "java"
 
 import org.optaplanner.core.api.score.buildin.hardmediumsoftlong.HardMediumSoftLongScoreHolder;
+import org.optaplanner.core.api.score.buildin.bendablelong.BendableLongScoreHolder;
 import common.optaplanner.basedomain.Vehicle;
 import common.optaplanner.basedomain.DistanceType;
 import vrpproblems.sintef.domain.SintefJob;
 
-global HardMediumSoftLongScoreHolder scoreHolder;
+global BendableLongScoreHolder scoreHolder;
 
 rule "Minimise the number of used vehicles"
     when
         $vehicle: Vehicle(numberOfJobs > 0)
     then
-        scoreHolder.addMediumConstraintMatch(kcontext, -1);
+        scoreHolder.addSoftConstraintMatch(kcontext, 0, -1);
 end
 
 rule "Minimize total driven distance"
@@ -20,7 +21,7 @@ rule "Minimize total driven distance"
         $sintefJob: SintefJob(previousStandstill != null)
     then
         long distanceInSeconds = $sintefJob.getTravelTimeInSecondsFromPreviousStandstill(DistanceType.STRAIGHT_LINE_DISTANCE);
-        scoreHolder.addSoftConstraintMatch(kcontext, -distanceInSeconds);
+        scoreHolder.addSoftConstraintMatch(kcontext, 1, -distanceInSeconds);
 end
 
 rule "Close loop for total driven distance"
@@ -28,5 +29,5 @@ rule "Close loop for total driven distance"
         $sintefJob: SintefJob(previousStandstill != null, nextJob== null)
     then
         long distanceInSeconds = $sintefJob.getTravelTimeInSecondsToDepot(DistanceType.STRAIGHT_LINE_DISTANCE);
-        scoreHolder.addSoftConstraintMatch(kcontext, -distanceInSeconds);
+        scoreHolder.addSoftConstraintMatch(kcontext, 1, -distanceInSeconds);
 end

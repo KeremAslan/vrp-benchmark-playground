@@ -5,6 +5,7 @@ import common.optaplanner.basedomain.Job;
 import common.optaplanner.basedomain.Standstill;
 import common.optaplanner.basedomain.Vehicle;
 import org.optaplanner.core.api.score.Score;
+import org.optaplanner.core.api.score.buildin.bendablelong.BendableLongScore;
 import org.optaplanner.core.api.score.buildin.hardmediumsoftlong.HardMediumSoftLongScore;
 import org.optaplanner.core.impl.score.director.easy.EasyScoreCalculator;
 import vrpproblems.sintef.domain.SintefJob;
@@ -25,6 +26,7 @@ public class SintefEasyScoreCalculator implements EasyScoreCalculator<SintefVehi
     int hardScore = 0;
     int numberOfVehicles = 0;
     long totalDistance = 0L;
+    int unassignedJobs = 0;
 
     Map<Vehicle, Integer> vehicleDemandMap = new HashMap<>();
     List<Vehicle> vehicles = sintefSolution.getVehicles();
@@ -49,12 +51,14 @@ public class SintefEasyScoreCalculator implements EasyScoreCalculator<SintefVehi
           totalDistance -= sintefJob.getTravelTimeInSecondsToDepot(DistanceType.STRAIGHT_LINE_DISTANCE);
         }
 
-        if(!sintefJob.isArrivalOnTime()) {
+        if (!sintefJob.isArrivalOnTime()) {
           timeWindowViolations++;
           hardScore--;
         }
       }
-
+      else {
+       unassignedJobs++;
+      }
     }
 
     for (Map.Entry<Vehicle, Integer> entry: vehicleDemandMap.entrySet()) {
@@ -72,6 +76,9 @@ public class SintefEasyScoreCalculator implements EasyScoreCalculator<SintefVehi
       }
     }
     System.out.println("Total time window violations " + timeWindowViolations + " total capacity violations " + capacityViolations);
-    return HardMediumSoftLongScore.valueOf(hardScore, numberOfVehicles, totalDistance);
+    long[] harscores = {hardScore, unassignedJobs};
+    long[] softScores = {numberOfVehicles, unassignedJobs};
+    return BendableLongScore.of(harscores, softScores);
+//    return HardMediumSoftLongScore.valueOf(hardScore, numberOfVehicles, totalDistance);
   }
 }

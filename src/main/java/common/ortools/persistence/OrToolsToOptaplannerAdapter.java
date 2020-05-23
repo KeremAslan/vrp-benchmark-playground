@@ -94,6 +94,7 @@ public class OrToolsToOptaplannerAdapter {
                 job.setArrivalTime(arrivalTime);
                 previousStandstill = job;
             }
+            System.out.println("piet");
         }
 
         Shift shift = new SintefShift(

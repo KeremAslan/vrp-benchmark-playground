@@ -3,6 +3,7 @@ package vrp.integration;
 import common.optaplanner.basedomain.DistanceType;
 import common.optaplanner.basedomain.Vehicle;
 import common.optaplanner.basedomain.VehicleRoutingSolution;
+import org.optaplanner.core.api.score.buildin.bendablelong.BendableLongScore;
 import vrp.testhelpers.OptaplannerHelper;
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,8 +19,8 @@ public class SintefScoreOptaplannerIntegrationTests {
     VehicleRoutingSolution problem = OptaplannerHelper.buildOptaplannerProblem(ProblemType.SINTEF, 1, 5);
     VehicleRoutingSolution solution = OptaplannerHelper.runOptaplannerWithBasicConfiguration(ProblemType.SINTEF, problem);
 
-    HardMediumSoftLongScore score = ((SintefVehicleRoutingSolution) solution).getScore();
-    Assert.assertEquals(score.getMediumScore(), -1);
+    BendableLongScore score = ((SintefVehicleRoutingSolution) solution).getScore();
+    Assert.assertEquals(score.getSoftScore(0), -1);
   }
 
   @Test
@@ -27,7 +28,7 @@ public class SintefScoreOptaplannerIntegrationTests {
     VehicleRoutingSolution problem = OptaplannerHelper.buildOptaplannerProblem(ProblemType.SINTEF, 1, 5);
     VehicleRoutingSolution solution = OptaplannerHelper.runOptaplannerWithBasicConfiguration(ProblemType.SINTEF, problem);
 
-    HardMediumSoftLongScore score = ((SintefVehicleRoutingSolution) solution).getScore();
+    BendableLongScore score = ((SintefVehicleRoutingSolution) solution).getScore();
 
     Vehicle vehicle = solution.getVehicles().get(0);
     SintefJob job = (SintefJob) vehicle.getNextJob();
@@ -40,7 +41,7 @@ public class SintefScoreOptaplannerIntegrationTests {
     }
     // Close loop
     totalDistance += lastJob.getTravelTimeInSecondsTo(DistanceType.STRAIGHT_LINE_DISTANCE, vehicle);
-    Assert.assertEquals(score.getSoftScore(), -totalDistance);
+    Assert.assertEquals(score.getSoftScore(1), -totalDistance);
   }
 
 }
