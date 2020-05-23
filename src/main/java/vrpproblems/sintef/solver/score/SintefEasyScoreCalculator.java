@@ -57,7 +57,7 @@ public class SintefEasyScoreCalculator implements EasyScoreCalculator<SintefVehi
         }
       }
       else {
-       unassignedJobs++;
+       unassignedJobs--;
       }
     }
 
@@ -75,10 +75,9 @@ public class SintefEasyScoreCalculator implements EasyScoreCalculator<SintefVehi
         numberOfVehicles--;
       }
     }
-    System.out.println("Total time window violations " + timeWindowViolations + " total capacity violations " + capacityViolations);
-    long[] harscores = {hardScore, unassignedJobs};
-    long[] softScores = {numberOfVehicles, unassignedJobs};
-    return BendableLongScore.of(harscores, softScores);
-//    return HardMediumSoftLongScore.valueOf(hardScore, numberOfVehicles, totalDistance);
+
+    long[] hardscores = {unassignedJobs, hardScore};
+    long[] softScores = {numberOfVehicles, totalDistance};
+    return BendableLongScore.of(hardscores, softScores);
   }
 }

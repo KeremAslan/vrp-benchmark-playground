@@ -32,5 +32,12 @@ rule "A vehicle cannot carry more items than its capacity"
         scoreHolder.addHardConstraintMatch(kcontext, 1,  -($totalDemand-$capacity));
 end
 
+rule "Jobs cannot be unassigned"
+    when
+        $job: TimeWindowedJob(vehicle == null)
+    then
+        scoreHolder.addHardConstraintMatch(kcontext, 0, -1);
+end
+
 
     

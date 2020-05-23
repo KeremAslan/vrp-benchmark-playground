@@ -11,7 +11,7 @@ global BendableLongScoreHolder scoreHolder;
 
 rule "Minimise the number of used vehicles"
     when
-        $vehicle: Vehicle(numberOfJobs > 0)
+        $vehicle: Vehicle(numberOfJobs > 0, numberOfJobs != null)
     then
         scoreHolder.addSoftConstraintMatch(kcontext, 0, -1);
 end
