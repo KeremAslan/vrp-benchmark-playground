@@ -29,11 +29,11 @@ public class OrToolsToOptaplannerAdapter {
     }
 
     public VehicleRoutingSolution convert() {
-//        this.assignment.
         int noVehicles = optaplannerModel.getVehicles().size();
         List<Vehicle> vehicles = new ArrayList<>();
         List<Job> jobs = new ArrayList<>();
         List<Location> locations = new ArrayList<>();
+
         // extract routes from or-tools
         Map<Long, List<Long>> routesMap = new HashMap<>();
         Map<Long, Long> arrivalTimeMap = new HashMap<>();
@@ -50,10 +50,8 @@ public class OrToolsToOptaplannerAdapter {
                 IntVar timeVar = timeDimension.cumulVar(index);
                 long arrivalTime = assignment.value(timeVar);
                 arrivalTimeMap.put(index, arrivalTime);
-
                 index = assignment.value(routingModel.nextVar(index));
             }
-
             routesMap.put(Integer.valueOf(vehicleNo).longValue(), route);
         }
 
@@ -70,14 +68,12 @@ public class OrToolsToOptaplannerAdapter {
                 for (int i = 0; i < route.size(); i++) {
                     Long jobId = route.get(i);
                     Job job = optaplannerModel.getJobById(String.valueOf(jobId));
-
                     jobToOrToolsIndexMap.put( job, jobId);
                     optaplannerSolutionRoute.add(job);
                     jobs.add(job);
                 }
                 routePlan.put(vehicle, optaplannerSolutionRoute);
             }
-
         }
 
         // fix planning and shadow variables
@@ -99,7 +95,6 @@ public class OrToolsToOptaplannerAdapter {
                 previousStandstill = job;
             }
         }
-
 
         Shift shift = new SintefShift(
                 "Or-Tools Solution",
