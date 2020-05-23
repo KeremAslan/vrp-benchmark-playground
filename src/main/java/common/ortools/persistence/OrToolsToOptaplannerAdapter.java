@@ -85,12 +85,13 @@ public class OrToolsToOptaplannerAdapter {
             Vehicle vehicle = entry.getKey();
             List<Job> route = entry.getValue();
             Standstill previousStandstill = vehicle;
-            for (int jobIndex=0; jobIndex< route.size()-1; jobIndex++) {
+            for (int jobIndex=0; jobIndex< route.size(); jobIndex++) {
                 TimeWindowedJob job = (TimeWindowedJob) route.get(jobIndex);
                 job.setPreviousStandstill(previousStandstill);
-                Job nextJob = route.get(jobIndex+1);
-                job.setNextJob(nextJob);
-
+                if (jobIndex != route.size()-1) {
+                    Job nextJob = route.get(jobIndex+1);
+                    job.setNextJob(nextJob);
+                }
                 job.setVehicle(vehicle);
                 Long ortoolsIndex = jobToOrToolsIndexMap.get(job);
                 long arrivalTime = arrivalTimeMap.get(ortoolsIndex);
