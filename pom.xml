@@ -56,9 +56,8 @@
             <artifactId>ortools</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/lib/com.google.ortools.jar</systemPath>
+            <systemPath>${basedir}/lib/com.google.ortools.jar</systemPath>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -66,6 +65,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <executions>
                     <execution>
                         <id>compile</id>
@@ -90,5 +90,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <optaplanner.version>7.37.0.Final</optaplanner.version>
+
     </properties>
 </project>

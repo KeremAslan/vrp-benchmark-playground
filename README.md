@@ -17,7 +17,7 @@ Or-tools is not available in the maven repository. Therefore to run or-tools one
 [here](https://developers.google.com/optimization/install). The dependency is included in the `lib` folder.  
 
 For both Windows and MacOS one needs to add the path where the `jniortools` dll is located to the classpath. In IntelliJ
-that can be done by right clicking on the library and then clickin on `Add to library`. 
+that can be done by right clicking on the library and then clicking on `Add to library`. 
 
 Note that on Windows the Visual Studio C++ redistributable needs to be installed for it to work. 
 

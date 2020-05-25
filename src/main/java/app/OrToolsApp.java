@@ -15,7 +15,9 @@ import java.util.logging.Logger;
 public class OrToolsApp {
 
   static {
-    System.loadLibrary("jniortools");
+    File file = new File("src/main/resources/lib/jniortools.dll");
+    System.load(file.getAbsolutePath());
+//    System.loadLibrary("jniortools");
   }
 
   private static final Logger LOG = Logger.getLogger(OrToolsApp.class.getName());
