@@ -4,9 +4,19 @@ The following libraries are used in this project
 * [Optaplanner](https://www.optaplanner.org/)
 * [Google's or-tools](https://developers.google.com/optimization/)
 
-The project was historically set up to only run Optaplanner and after some experimentation Or-tools was set up as an alternative.
-As such, the modelling is primarily done using the Optaplanner models and Or-tools is accessed via these models. The adapters
-`OptaplannerToOrToolsAdapter` and `OrtoolsToOptaplannerAdapter` translate the model in and out. 
+## Guide
+The project was initially set up to experiment with Optaplanner and later expanded to compare against other libraries. 
+The first alternate library that is supported is Or-tools. In the modelling the Optaplanner models are re-used extensively, which means
+that Or-tools is accessed via these models. The adapters `OptaplannerToOrToolsAdapter` and `OrtoolsToOptaplannerAdapter` translate the model in and out. 
+
+Although the implementations only supports problems that are capacitated and time-windowed, the project is easily extendable to other vrp flavours. 
+This is done under the guise of different `problem-types`. A problem-type is an arbitrary name for a certain vehicle routing problem,
+e.g. a [CVRPTW from Solomon](https://www.sintef.no/projectweb/top/vrptw/solomon-benchmark/), or a 
+[CVRPTW from Gehring & Homberger](https://www.sintef.no/projectweb/top/vrptw/homberger-benchmark/). Currently, only problems of type
+CVRPTW are supported and this is called `SINTEF` in this project (from where the data is sourced). 
+This name is rather arbitrary and may change in the future. Other flavours of the VRP are not supported yet. 
+
+To implement your own flavour refer to the `SintefVehicleRoutingSolution` and the [Optaplanner vrp implementation](https://github.com/kiegroup/optaplanner/tree/master/optaplanner-examples/src/main/java/org/optaplanner/examples/vehiclerouting)
 
 ## Dependencies
 ### Optaplanner
