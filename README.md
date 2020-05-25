@@ -28,14 +28,13 @@ The program supports the following program arguments:
 * `-runtimeInMinutes` or `-rt`. The runtime in minutes for the problem. 
 
 ## How to run a single problem
-First run `mvn pacakge` to create a jar. 
 ### Optaplanner
-`mvn clean exec:java -Dexec.args="-m optaplanner -p SINTEF -runtimeInMinutes 1 -f input/sintef/homberger_1000_customer_instances/C1_10_2.TXT"`
+`mvn clean install exec:java -Dexec.args="-m optaplanner -p SINTEF -runtimeInMinutes 1 -f input/sintef/homberger_1000_customer_instances/C1_10_2.TXT"`
 
 ### Or-tools
-`mvn clean exec:java -Dexec.args="-m or-tools -p SINTEF -runtimeInMinutes 1 -f input/sintef/homberger_1000_customer_instances/C1_10_2.TXT"`
+`mvn clean install exec:java -Dexec.args="-m or-tools -p SINTEF -runtimeInMinutes 1 -f input/sintef/homberger_1000_customer_instances/C1_10_2.TXT"`
 
 ## How to run the benchmark
 ### Benchmarker
 The functionality to run the same problem set against different libraries can be accessed via the following command. 
-`mvn clean exec:java -Dexec.args="-m benchmark -p SINTEF -runtimeInMinutes 1 -f input/sintef/homberger_1000_customer_instances/ -o output.csv"`
+`mvn clean install exec:java -Dexec.args="-m benchmark -p SINTEF -runtimeInMinutes 1 -f input/sintef/homberger_1000_customer_instances/ -o output.csv"`
