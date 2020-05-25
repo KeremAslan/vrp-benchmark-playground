@@ -18,15 +18,14 @@ import java.util.*;
 
 public class MainApp {
 
-//  private final static Logger LOG = Logger.getLogger(MainApp.class.getName());
+
   private static final Logger LOG = LoggerFactory.getLogger(Main.class);
 
   public static void main(String[] args) {
 
     Options options = getOptions();
 
-    ProblemType problemType = null;
-    String outputFile;
+    ProblemType problemType;
     String runtimeInMinutes;
 
     try {
@@ -47,7 +46,6 @@ public class MainApp {
           Score ortoolsScore = runOrTools(file.getPath(), problemType, runtimeInMinutes);
           optaplannerScores.put(file.getName(), optaplannerScore);
           ortoolsScores.put(file.getName(), ortoolsScore);
-//          break;
         }
         writeResultsToCsv(ortoolsScores, optaplannerScores, outputPath);
       } else {
@@ -137,7 +135,9 @@ public class MainApp {
     if (problem instanceof  SintefVehicleRoutingSolution) {
       SintefVehicleRoutingSolution sintefProblem = (SintefVehicleRoutingSolution) problem;
       SintefEasyScoreCalculator sintefEasyScoreCalculator = new SintefEasyScoreCalculator();
-      return sintefEasyScoreCalculator.calculateScore(sintefProblem);
+      Score score =  sintefEasyScoreCalculator.calculateScore(sintefProblem);
+      LOG.info("Optaplanner score for ortools problen is " + score);
+      return score;
     }
     throw new RuntimeException("Something went wrong when trying to compute Optaplanner score for ortools solution");
 
