@@ -50,10 +50,15 @@ public abstract class TimeWindowedJob extends Job {
   public boolean isArrivalOnTime() {
 
     if (arrivalTime != null) {
-      Instant instantOfArrivalTime = Instant.ofEpochSecond(arrivalTime);
-
-      return  getAllowedTimeWindow().contains(instantOfArrivalTime);
-
+      // temporarily commented out this logic as ortools treats arrival time valid as long as
+      // interval.start <= arrival time <= interval end
+      // the method Interval.contains checks only for interval.start <= arrival time < interval end
+      // which return false violations
+      // -- comment out the code below to use that logic instead.
+      //      Instant instantOfArrivalTime = Instant.ofEpochSecond(arrivalTime);
+      //      return  getAllowedTimeWindow().contains(instantOfArrivalTime);
+      return arrivalTime >= getAllowedTimeWindow().getStart().getEpochSecond() &&
+              arrivalTime <= getAllowedTimeWindow().getEnd().getEpochSecond();
     }
     return false;
   }
