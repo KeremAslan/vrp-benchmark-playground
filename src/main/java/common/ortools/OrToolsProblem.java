@@ -1,20 +1,17 @@
 package common.ortools;
 
-import com.google.ortools.constraintsolver.Assignment;
-import com.google.ortools.constraintsolver.FirstSolutionStrategy;
-import com.google.ortools.constraintsolver.IntVar;
-import com.google.ortools.constraintsolver.RoutingDimension;
-import com.google.ortools.constraintsolver.RoutingIndexManager;
-import com.google.ortools.constraintsolver.RoutingModel;
-import com.google.ortools.constraintsolver.RoutingSearchParameters;
-import common.optaplanner.basedomain.Vehicle;
+import com.google.ortools.constraintsolver.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import vrpproblems.sintef.domain.SintefVehicle;
-import com.google.ortools.constraintsolver.main;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class OrToolsProblem {
+
+
+  private static final Logger LOG = LoggerFactory.getLogger(OrToolsProblem.class);
 
   /** Time windows is  for the locations. Index 0 is that time windows of the depot*/
   private long[][] timeWindows;
@@ -118,7 +115,7 @@ public class OrToolsProblem {
     setTimeWindowConstraints();
     setDisjoint();
     // set service times
-    // Or tools does not support seperate service times, hence this is added to the travel time matrix.
+    // Or tools does not support separate service times, hence this is added to the travel time matrix.
 
     // minimise number of used vehicle
     routingModel.setFixedCostOfAllVehicles(100);
@@ -130,11 +127,9 @@ public class OrToolsProblem {
     long end = System.currentTimeMillis();
     long size = routingModel.size();
     int status = routingModel.status();
-    System.out.println("Size " + size + " status  " + status);
-    System.out.println("Duration: " + (end-start)/1000.0 + " seconds");
-    System.out.println("Assignment null ?" + solution == null);
-    System.out.println("Solver status " + routingModel.status());
-//    printSolution(routingModel,routingIndexManager, solution );
+    LOG.debug("Size " + size + " status  " + status);
+    LOG.info("Duration: " + (end-start)/1000.0 + " seconds. Solver status " + status);
+    printSolution(routingModel,routingIndexManager, solution );
   }
 
   public Assignment getSolution() {
@@ -151,7 +146,7 @@ public class OrToolsProblem {
     Set<Integer> visitedNodes = new HashSet<>();
     for (int i = 0; i < vehicleNumber; i++) {
       long index = routingModel.start(i);
-      System.out.println("Route for vehicle " + i + ":");
+      LOG.debug("Route for vehicle " + i + ":");
       String route = "";
       while (!routingModel.isEnd(index)) {
         totalNumberOfVisitedDrops++;
@@ -167,14 +162,14 @@ public class OrToolsProblem {
       IntVar timeVar = timeDimension.cumulVar(index);
       route += indexManager.indexToNode(index) + " Time (" + solution.min(timeVar) + ","
               + solution.max(timeVar) + ")";
-      System.out.println(route);
-      System.out.println("Time of the route " + solution.min(timeVar) + " minutes.");
+      LOG.debug(route);
+      LOG.debug("Time of the route " + solution.min(timeVar) + " minutes.");
       totalTime += solution.min(timeVar);
       if (solution.min(timeVar) > 0) {
         usedVehicles++;
       }
     }
-    System.out.println("Total time of all routes: " + totalTime + " minutes. Used vehicles " +
+    LOG.debug("Total time of all routes: " + totalTime + " minutes. Used vehicles " +
             usedVehicles + " total distance " + totalDistance + " total number of drops " + totalNumberOfVisitedDrops +
             " number of disjoints " + routingModel.getNumberOfDisjunctions() + " set size " + visitedNodes.size());
   }

@@ -136,7 +136,7 @@ public class MainApp {
       SintefVehicleRoutingSolution sintefProblem = (SintefVehicleRoutingSolution) problem;
       SintefEasyScoreCalculator sintefEasyScoreCalculator = new SintefEasyScoreCalculator();
       Score score =  sintefEasyScoreCalculator.calculateScore(sintefProblem);
-      LOG.info("Optaplanner score for ortools problen is " + score);
+      LOG.info("Optaplanner score for ortools problem is " + score);
       return score;
     }
     throw new RuntimeException("Something went wrong when trying to compute Optaplanner score for ortools solution");
