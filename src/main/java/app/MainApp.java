@@ -174,27 +174,13 @@ public class MainApp {
         .hasArg()
         .required(false)
         .build());
-    options.addOption(Option.builder("id")
-        .longOpt("input-directory")
-        .desc("A directory containing the problems to be solved")
-        .numberOfArgs(1)
-        .hasArg()
-        .required(false)
-        .build());
-    options.addOption(Option.builder("od")
-        .longOpt("output-directory")
-        .desc("Output directory containing the results of the problems to be solved")
-        .numberOfArgs(1)
-        .hasArg()
-        .required(false)
-        .build());
     options.addOption(Option.builder("rt")
-            .longOpt("runtimeInMinutes")
-            .desc("The runtime in minutes for the problem")
-            .numberOfArgs(1)
-            .hasArg()
-            .required(false)
-            .build());
+        .longOpt("runtimeInMinutes")
+        .desc("The runtime in minutes for the problem")
+        .numberOfArgs(1)
+        .hasArg()
+        .required(false)
+        .build());
     return options;
   }
 }
