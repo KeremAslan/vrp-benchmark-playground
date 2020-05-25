@@ -1,7 +1,7 @@
 package common.optaplanner.basedomain.timewindowed;
 
 
-import common.optaplanner.basedomain.BaseCoordinate;
+import common.optaplanner.basedomain.Coordinates;
 import common.optaplanner.basedomain.Location;
 import org.threeten.extra.Interval;
 
@@ -13,7 +13,7 @@ public abstract class TimeWindowedLocation extends Location {
   private Interval operationalTimeWindow;
   private ZoneId zoneId;
 
-  public TimeWindowedLocation(String id, BaseCoordinate coordinates, Interval operationalTimeWindow,
+  public TimeWindowedLocation(String id, Coordinates coordinates, Interval operationalTimeWindow,
                               ZoneId zoneId) {
 
     super(id, coordinates);
