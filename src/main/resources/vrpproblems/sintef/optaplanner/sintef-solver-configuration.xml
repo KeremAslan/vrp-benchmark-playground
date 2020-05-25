@@ -28,7 +28,7 @@
 <!--        </changeMoveSelector>-->
     </constructionHeuristic>
     <localSearch>
-        <localSearchType>LATE_ACCEPTANCE</localSearchType>
+        <localSearchType>TABU_SEARCH</localSearchType>
         <unionMoveSelector>
             <changeMoveSelector>
                 <entitySelector id="entitySelector1"/>
@@ -64,7 +64,7 @@
     </localSearch>
 
     <termination>
-        <secondsSpentLimit>30</secondsSpentLimit>
+        <secondsSpentLimit>60</secondsSpentLimit>
     </termination>
 
 </solver>
