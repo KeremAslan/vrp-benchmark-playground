@@ -1,4 +1,8 @@
-# Vehicle Routing
+---
+title: Vehicle Routing Playground
+---
+ 
+# Vehicle Routing Playground
 This project is an experimental environment for testing different optimisation libraries on the vehicle routing problem. 
 The following libraries are used in this project
 * [Optaplanner](https://www.optaplanner.org/)
