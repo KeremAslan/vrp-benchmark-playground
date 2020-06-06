@@ -51,7 +51,7 @@ problems and find solutions without having to do all the hard work. Having said 
 a lot of effort. Often one needs to preprocess the data, model the problem, tune the libraries and export the solution. 
 Not just that. For anyone interested in how one library compares to another all this work needs to be repeated. Having done that 
 a lot over the past year or two I want to make it easy for anyone interested enough to get their hands dirty, to have a go at 
-modeling the vrp and using the popular libraries to solve it. Hence, today I am releasing the vehicle routing playground. 
+modeling the vrp and using the popular libraries to solve it. Hence, today I am releasing the [vehicle routing playground](https://github.com/KeremAslan/vrp-playground/). 
 
 The vehicle routing playground is an environment that models the VRP on top of the libraries [OR-tools](https://developers.google.com/optimization/) 
 and [Optaplanner](https://www.optaplanner.org/). I hope by doing so, it can help anyone to get started with these problems rather quickly and 
